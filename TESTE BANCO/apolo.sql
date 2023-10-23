@@ -1,5 +1,5 @@
-create database APOLO_DB;
-use APOLO_DB;
+create database APOLLO_DB;
+use APOLLO_DB;
 
 create table CLIENTE(
 	IDCliente int auto_increment primary key,
