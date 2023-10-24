@@ -1,5 +1,5 @@
-create database APOLLO_DB;
-use APOLLO_DB;
+create database APOLLO;
+use APOLLO;
 
 create table CLIENTE(
 	IDCliente int auto_increment primary key,
@@ -36,41 +36,35 @@ create table CUSTO(
 create table PRESTACAO (
     IDPrestacao INT AUTO_INCREMENT PRIMARY KEY,
     Adicional DECIMAL(10, 2),
-    IDServico INT,
     IDCliente INT,
-    FOREIGN KEY (IDServico) REFERENCES SERVICO(IDServico),
     FOREIGN KEY (IDCliente) REFERENCES CLIENTE(IDCliente)
 )engine = InnoDB auto_increment=1 comment='Cadastro de prestações de serviço realizadas';
 
-create table FUNCIONARIO_PRESTACAO (
+create table PRESTACAO_FUNCIONARIO (
     IDFuncionario INT,
     IDPrestacao INT,
     FOREIGN KEY (IDFuncionario) REFERENCES FUNCIONARIO(IDFuncionario),
     FOREIGN KEY (IDPrestacao) REFERENCES PRESTACAO(IDPrestacao)
-)engine = InnoDB auto_increment=1 comment='Funcionários relacionados a cada prestação de serviço';
+)engine = InnoDB comment='Funcionários relacionados a cada prestação de serviço';
 
 create table PRESTACAO_CUSTO(
 	IDPrestacao int,
     IDCusto int,
     FOREIGN KEY (IDPrestacao) references PRESTACAO(IDPrestacao),
     FOREIGN KEY (IDCusto) references CUSTO(IDCusto)
-)engine=InnoDB auto_increment=1 comment ='Relação dos custos de cada prestação';
+)engine=InnoDB comment ='Relação dos custos de cada prestação';
 
 create table PRESTACAO_DATA(
 	IDPrestacao int,
     IDData int,
     FOREIGN KEY (IDPrestacao) references PRESTACAO(IDPrestacao),
     FOREIGN KEY (IDData) references DATA(IDData)
-)engine=InnoDB auto_increment=1 comment = 'Relação de datas e prestações';
+)engine=InnoDB comment = 'Relação de datas e prestações';
 
-SHOW TABLES FROM APOLO_DB;
-DESC PRESTACAO_CUSTO;
-SELECT * FROM PRESTACAO_DATA;
-
-
-
-
-
-
-
-
+create table PRESTACAO_SERVICO(
+	IDPrestacao int,
+    IDServico int,
+    Custo DECIMAL(10, 2),
+    FOREIGN KEY (IDPrestacao) references PRESTACAO(IDPrestacao),
+    FOREIGN KEY (IDServico) references SERVICO(IDServico)
+)engine=InnoDB comment = 'Relação de servicos e prestações';
