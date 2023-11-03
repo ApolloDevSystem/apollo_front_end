@@ -1,0 +1,50 @@
+
+<div class="container">
+    <div>
+        <h3>Cliente</h3>
+        <div class="form-floating mb-3" style="width: 30%;">
+            <input class="form-control" id="inputNomeCliente" style=" background-color: #D9D9D9;">
+            <label for="inputNomeCliente">Nome do cliente</label>
+        </div>      
+    </div>
+    <hr>
+    <div>
+        <h3>Descrição do problema</h3>
+        <div class="form-floating">
+            <textarea class="form-control" id="txtDescricao" style="height: 100px; width: 40%; background-color: #D9D9D9;"></textarea>
+            <label for="txtDescricao">Descrição</label>
+          </div>
+    </div>
+    <hr>
+    <div>
+        <h3>Serviços</h3>
+        <div class="input-group mb-3" style="width: 30%;">
+          <select class="form-select" id="groupServicos" style="background-color: #D9D9D9;" onchange="atualizarValor()">
+            <option selected></option>
+            <option value="1">Manutenção</option>
+            <option value="2">Instalação</option>
+          </select>
+        </div>
+        <div class="form-floating mb-3" style="width: 30%;">
+          <input class="form-control" id="valorInput" style="background-color: #D9D9D9;" disabled value="R$ 0">
+          <label for="valorInput">Valor</label>
+        </div>
+      </div>
+      
+      <script>
+        function atualizarValor() {
+          var servicoSelecionado = document.getElementById("groupServicos").value;
+          var valorInput = document.getElementById("valorInput");
+      
+          if (servicoSelecionado === "1") {
+            // Manutenção
+            valorInput.value = "R$ 1000";
+          } else if (servicoSelecionado === "2") {
+            // Instalação
+            valorInput.value = "R$ 2000";
+          } else {
+            valorInput.value = "R$ 0";
+          }
+        }
+      </script>
+  
