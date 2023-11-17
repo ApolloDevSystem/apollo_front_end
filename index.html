@@ -281,7 +281,7 @@
             history.pushState({}, null, "/clientes");
             main_content.textContent = "";
             let clientes = "componentes/cliente/clientes.html";
-            render(main_content, clientes, null);
+            render(main_content, clientes, clientes.js);
             carregarClientes();
         }
         function viewFunc() {
