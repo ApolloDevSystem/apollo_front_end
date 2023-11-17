@@ -98,18 +98,40 @@
                                 </li>
                             </ul>
                         </div>
-                        <a
-                            href="#"
-                            class="nav_link text-white"
-                            onclick="clientes()"
-                        >
-                            <img
-                                class="bi me-2"
-                                src="icons/clientes.svg"
-                                alt="logo"
-                            />
-                            <span class="nav_name"> Clientes </span>
-                        </a>
+                        <div class="dropdown-rigth">
+                            <a
+                                href="#"
+                                class="d-flex align-items-center text-white text-decoration-none dropdown-toggle nav_link"
+                                id="dropdownCli"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                                aria-haspopup="true"
+                            >
+                                <img
+                                    class="bi me-2"
+                                    src="icons/clientes.svg"
+                                    alt="logo"
+                                />
+                                <span class="nav_name"> Clientes </span>
+                            </a>
+                            <ul
+                                href="#"
+                                class="dropdown-menu dropdown-menu-dark text-small shadow"
+                                aria-labelledby="dropdownCli"
+                            >
+                                <li>
+                                    <a class="dropdown-item" href="#" onclick="cadastrarCli()">
+                                        Cadastrar cliente</a
+                                    >
+                                </li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li>
+                                    <a class="dropdown-item" href="#" onclick="viewCli()">
+                                        Visualizar clientes</a
+                                    >
+                                </li>
+                            </ul>
+                        </div>
                         <div class="dropdown-rigth">
                             <a
                                 href="#"
@@ -248,11 +270,18 @@
     <script>
         // window.onload = history.back()
         let main_content = document.querySelector("#main-content");
-        function clientes() {
+
+        function cadastrarCli() {
+            let clientes = "componentes/cliente/cadastroCliente.html";
+            render(main_content, clientes, null);
+            
+        }
+
+        function viewCli() {
             history.pushState({}, null, "/clientes");
             main_content.textContent = "";
             let clientes = "componentes/cliente/clientes.html";
-            render(main_content, clientes, null);
+            render(main_content, clientes, clientes.js);
             carregarClientes();
         }
         function viewFunc() {
