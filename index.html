@@ -272,16 +272,20 @@
         let main_content = document.querySelector("#main-content");
 
         function cadastrarCli() {
+            //history.pushState({}, null, "/clientes");
+            main_content.textContent = "";
             let clientes = "componentes/cliente/cadastroCliente.html";
-            render(main_content, clientes, null);
+            let clientesjs = "assets/js/clientes.js";
+            render(main_content, clientes, clientesjs);
             
         }
 
         function viewCli() {
-            history.pushState({}, null, "/clientes");
+            //history.pushState({}, null, "/clientes");
             main_content.textContent = "";
             let clientes = "componentes/cliente/clientes.html";
-            render(main_content, clientes, clientes.js);
+            let clientesjs = "assets/js/clientes.js";
+            render(main_content, clientes, clientesjs);
             carregarClientes();
         }
         function viewFunc() {
