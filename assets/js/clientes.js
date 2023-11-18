@@ -172,6 +172,7 @@ function createElement(type, attributes) {
         id: 'btnRemoverEndereco',
     });
     btnRemoverEndereco.textContent = 'Remover Endereço Adicional';
+    btnRemoverEndereco.classList.add('btn', 'btn-outline-success', 'mt-4')
     btnRemoverEndereco.onclick = function () {
       removeForm();
     };
