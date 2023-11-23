@@ -1,0 +1,82 @@
+<body>
+    <div class="container">
+        <div>
+            <h3 class="titulo">Cliente</h3>
+            <div class="row">
+                <div class="col">
+                    <div class="form-floating mb-3">
+                        <input
+                            class="form-control"
+                            id="inputNomeCliente"
+                            style="width: 35%; background-color: #d9d9d9"
+                        />
+                        <label for="inputNomeCliente">Nome do cliente</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <hr/>
+        <h3 class="titulo">Descrição do problema</h3>
+        <div class="row">
+            <div class="col">
+                <div class="form-floating mb-3">
+                    <textarea
+                        class="form-control"
+                        id="inputDescricao"
+                        style="width: 45%; height: 100px; background-color: #d9d9d9"
+                    ></textarea>
+                    <label for="inputDescricao"
+                        >Descrição</label
+                    >
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <h3 class="titulo">Serviços</h3>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 mx-0 px-0">
+                    <div class="form-floating">
+                        <select class="form-select"
+                                id="tipoServico"
+                                aria-label="Floating label select example"
+                                style="width: 100%; background-color: #d9d9d9"
+                        >
+                            <option selected></option>
+                            <option value="1">Manutenção</option>
+                            <option value="2">Instalação</option>
+                        </select>
+                        <label for="tipoServico">Tipo de serviço</label>
+                    </div>
+                </div>
+                <br>
+                <div class="col-md-2 mx-0 px-0">
+                    <div class="form-floating mb-3">
+                        <input
+                            class="form-control"
+                            id="inputValor"
+                            style="width: 100%; background-color: #d9d9d9"
+                            disabled
+                        />
+                        <label for="inputValor">Valor</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div id="novoServico"></div>
+
+        <hr>
+        <button id="btnAddServico" class="btn btn-outline-success">
+            Adicionar serviço
+        </button>
+        <button id="btnConfirmar" class="btn btn-success">
+            Confirmar
+        </button>
+        <br><br><br><br><br><br>
+
+    </div>
+</body>
