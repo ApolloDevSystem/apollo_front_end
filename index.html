@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Apollo-km5</title>
 
         <!-- Bootstrap CSS -->
@@ -209,7 +210,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="dropdown fixed-bottom">
+                <div class="dropdown-rigth" id="apollo_drop">
                     <a
                         href="#"
                         class="d-flex align-items-center text-white text-decoration-none dropdown-toggle nav_link"
@@ -221,8 +222,8 @@
                         <img
                             src="img/apollo color.png"
                             alt=""
-                            width="32"
-                            height="32"
+                            width="24"
+                            height="24"
                             class="rounded-circle me-2"
                         />
                         <strong>Apollo</strong>
@@ -268,6 +269,7 @@
     </body>
     <script src="assets/js/funcionario/funcionarios.js"></script>
     <script>
+        const token = document.head.querySelector('meta[name="csrf-token"]').getAttribute('content');
         // window.onload = history.back()
         let main_content = document.querySelector("#main-content");
 
@@ -275,19 +277,20 @@
             //history.pushState({}, null, "/clientes");
             main_content.textContent = "";
             let clientes = "componentes/cliente/cadastroCliente.html";
-            let clientesjs = "assets/js/clientes.js";
-            render(main_content, clientes, clientesjs);
+            let clientesjs = "assets/js/cliente/clientes.js";
+            render(main_content, clientes, clientesjs, token);
             
         }
 
+        window.onload = viewCli()
         function viewCli() {
             //history.pushState({}, null, "/clientes");
             main_content.textContent = "";
             let clientes = "componentes/cliente/clientes.html";
-            let clientesjs = "assets/js/clientes.js";
-            render(main_content, clientes, clientesjs);
-            carregarClientes();
+            let clientesjs = "assets/js/cliente/clientesTable.js";
+            render(main_content, clientes, clientesjs, token);
         }
+
         function viewFunc() {
             main_content.textContent = "";
             fetch("/componentes/funcionario/funcionarios.html")

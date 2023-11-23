@@ -1,4 +1,4 @@
-function render(div, component, scriptsrc){
+function render(div, component, scriptsrc, token){
     //fetch de render
     fetch(component)
         .then(response => {
