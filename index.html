@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
         <title>Apollo-km5</title>
 
         <!-- Bootstrap CSS -->
@@ -87,13 +87,20 @@
                                 aria-labelledby="dropdownServ"
                             >
                                 <li>
-                                    <a class="dropdown-item" href="#" onclick="cadastrarServ()"
+                                    <a
+                                        class="dropdown-item"
+                                        href="#"
+                                        onclick="cadastrarServ()"
                                         >Novo Serviço</a
                                     >
                                 </li>
                                 <li><hr class="dropdown-divider" /></li>
                                 <li>
-                                    <a class="dropdown-item" href="#" onclick="viewServ()">
+                                    <a
+                                        class="dropdown-item"
+                                        href="#"
+                                        onclick="viewServ()"
+                                    >
                                         Visualizar Serviços</a
                                     >
                                 </li>
@@ -121,13 +128,21 @@
                                 aria-labelledby="dropdownCli"
                             >
                                 <li>
-                                    <a class="dropdown-item" href="#" onclick="cadastrarCli()">
+                                    <a
+                                        class="dropdown-item"
+                                        href="#"
+                                        onclick="cadastrarCli()"
+                                    >
                                         Cadastrar cliente</a
                                     >
                                 </li>
                                 <li><hr class="dropdown-divider" /></li>
                                 <li>
-                                    <a class="dropdown-item" href="#" onclick="viewCli()">
+                                    <a
+                                        class="dropdown-item"
+                                        href="#"
+                                        onclick="viewCli()"
+                                    >
                                         Visualizar clientes</a
                                     >
                                 </li>
@@ -161,7 +176,11 @@
                                 </li>
                                 <li><hr class="dropdown-divider" /></li>
                                 <li>
-                                    <a class="dropdown-item" href="#" onclick="viewFunc()">
+                                    <a
+                                        class="dropdown-item"
+                                        href="#"
+                                        onclick="viewFunc()"
+                                    >
                                         Visualizar Funcionários</a
                                     >
                                 </li>
@@ -207,54 +226,58 @@
                                     <span class="text-white">confirmar</span>
                                 </button>
                             </div>
+                            <div class="dropdown-rigth" id="apollo_drop">
+                                <a
+                                    href="#"
+                                    class="d-flex align-items-center text-white text-decoration-none dropdown-toggle nav_link"
+                                    id="dropdownUser1"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                    aria-haspopup="true"
+                                >
+                                    <img
+                                        src="img/apollo color.png"
+                                        alt=""
+                                        width="24"
+                                        height="24"
+                                        class="rounded-circle me-2"
+                                    />
+                                    <strong>Apollo</strong>
+                                </a>
+                                <ul
+                                    class="dropdown-menu dropdown-menu-dark text-small shadow"
+                                    aria-labelledby="dropdownUser1"
+                                >
+                                    <li>
+                                        <a class="dropdown-item" href="#"
+                                            >Configurações</a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#"
+                                            >Contato</a
+                                        >
+                                    </li>
+                                    <li><hr class="dropdown-divider" /></li>
+                                    <!--tratar logoff-->
+                                    <li>
+                                        <a
+                                            class="dropdown-item"
+                                            href="login.html"
+                                            onclick="sair()"
+                                            >Sair</a
+                                        >
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="dropdown-rigth" id="apollo_drop">
-                    <a
-                        href="#"
-                        class="d-flex align-items-center text-white text-decoration-none dropdown-toggle nav_link"
-                        id="dropdownUser1"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                        aria-haspopup="true"
-                    >
-                        <img
-                            src="img/apollo color.png"
-                            alt=""
-                            width="24"
-                            height="24"
-                            class="rounded-circle me-2"
-                        />
-                        <strong>Apollo</strong>
-                    </a>
-                    <ul
-                        class="dropdown-menu dropdown-menu-dark text-small shadow"
-                        aria-labelledby="dropdownUser1"
-                    >
-                        <li>
-                            <a class="dropdown-item" href="#">Configurações</a>
-                        </li>
-                        <li><a class="dropdown-item" href="#">Contato</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <!--tratar logoff-->
-                        <li>
-                            <a
-                                class="dropdown-item"
-                                href="login.html"
-                                onclick="sair()"
-                                >Sair</a
-                            >
-                        </li>
-                    </ul>
                 </div>
             </nav>
         </div>
         <!--Container Main start-->
         <div class="height-100">
-            <div id="main-content" class="mt-4">
-                
-            </div>
+            <div id="main-content" class="mt-4"></div>
         </div>
 
         <!-- jQuery (antes do Bootstrap) -->
@@ -265,51 +288,43 @@
 
         <script src="assets/js/sidebar.js"></script>
         <script src="assets/js/spa.js"></script>
-    
     </body>
-    <script src="assets/js/funcionario/funcionarios.js"></script>
     <script>
-        const token = document.head.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        const token = document.head
+            .querySelector('meta[name="csrf-token"]')
+            .getAttribute("content");
         // window.onload = history.back()
         let main_content = document.querySelector("#main-content");
 
-        function cadastrarCli() {
-            //history.pushState({}, null, "/clientes");
-            main_content.textContent = "";
-            let clientes = "componentes/cliente/cadastroCliente.html";
-            let clientesjs = "assets/js/cliente/clientes.js";
-            render(main_content, clientes, clientesjs, token);
-            
+        window.addEventListener('popstate', rotear)
+        window.addEventListener('load', rotear)
+        function rotear(){
+            var caminho = window.location.pathname
+            console.log(caminho)
+            if(caminho == 'clientes'){
+                viewCli()
+            }
         }
 
-        window.onload = viewCli()
+        function cadastrarCli() {
+            //history.pushState({}, null, "/clientes");
+            let clientes = "componentes/cliente/cadastroCliente.html";
+            let clientesjs = "assets/js/cliente/clientes.js";
+            render(main_content, clientes, clientesjs);
+        }
+
         function viewCli() {
             //history.pushState({}, null, "/clientes");
-            main_content.textContent = "";
             let clientes = "componentes/cliente/clientes.html";
             let clientesjs = "assets/js/cliente/clientesTable.js";
-            render(main_content, clientes, clientesjs, token);
+            render(main_content, clientes, clientesjs);
         }
 
         function viewFunc() {
-            main_content.textContent = "";
-            fetch("/componentes/funcionario/funcionarios.html")
-                .then((response) => response.text())
-                .then((data) => {
-                    main_content.innerHTML = data;
-                    let teste =
-                        '[{"id": 1, "img": "asds", "nome": "kaua", "cargo": "dono"}, {"id": 2, "img": "asds", "nome": "kaua", "cargo": "dono"}, {"id": 1, "img": "asds", "nome": "kaua", "cargo": "dono"}, {"id": 2, "img": "asds", "nome": "kaua", "cargo": "dono"}, {"id": 1, "img": "asds", "nome": "kaua", "cargo": "dono"}, {"id": 2, "img": "asds", "nome": "kaua", "cargo": "dono"}]';
-                    let dataF = JSON.parse(teste);
-                    const divFunc = document.querySelector("#func");
-                    alimentarFunc(dataF, divFunc);
-                    const divAdm = document.querySelector("#adm");
-                    alimentarAdm(dataF, divAdm);
-                })
-                .catch((error) => {
-                    console.error("Erro ao carregar o componente HTML:", error);
-                });
-        }
+            let funcionarios = "componentes/funcionario/funcionarios.html";
+            let funcionariosjs = "assets/js/funcionario/funcionarios.js";
 
-        
+            render(main_content, funcionarios, funcionariosjs);
+        }
     </script>
 </html>

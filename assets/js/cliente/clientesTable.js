@@ -1,8 +1,18 @@
-window.onload = carregarTabela()
-function carregarTabela(){
+carregarTabela()
+function carregarTabela(pesquisaInp = null){
     let container = document.querySelector('#table')
    
-    let pesquisaInp = null
+    //implementando pesquisa
+    const pesqBtn = document.querySelector('#pesqBtn')
+    pesqBtn.addEventListener('click', () =>{
+        const pesqBtn = document.querySelector('#pesqInp')
+        pesquisaInp = pesqBtn.value
+        console.log(pesquisaInp)
+        carregarTabela(pesquisaInp)
+    })
+
+
+    
     const tbody = document.createElement('tbody')
     const rota = 'clientes'
     fetch('http://127.0.0.1:8000/api/'+rota,{
