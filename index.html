@@ -296,25 +296,26 @@
         // window.onload = history.back()
         let main_content = document.querySelector("#main-content");
 
+        //teste de roteamento
         window.addEventListener('popstate', rotear)
         window.addEventListener('load', rotear)
         function rotear(){
             var caminho = window.location.pathname
             console.log(caminho)
-            if(caminho == 'clientes'){
+            if(caminho === 'clientes'){
                 viewCli()
             }
         }
 
         function cadastrarCli() {
-            //history.pushState({}, null, "/clientes");
+            history.pushState({}, null, "/clientes");
             let clientes = "componentes/cliente/cadastroCliente.html";
             let clientesjs = "assets/js/cliente/clientes.js";
             render(main_content, clientes, clientesjs);
         }
 
         function viewCli() {
-            //history.pushState({}, null, "/clientes");
+            history.pushState({}, null, "/clientes");
             let clientes = "componentes/cliente/clientes.html";
             let clientesjs = "assets/js/cliente/clientesTable.js";
             render(main_content, clientes, clientesjs);
