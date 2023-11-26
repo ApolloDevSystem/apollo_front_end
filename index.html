@@ -171,6 +171,7 @@
                             >
                                 <li>
                                     <a class="dropdown-item" href="#"
+                                    onclick="cadastrarFunc()"
                                         >Cadastrar Funcionário</a
                                     >
                                 </li>
@@ -288,6 +289,7 @@
 
         <script src="assets/js/sidebar.js"></script>
         <script src="assets/js/spa.js"></script>
+        <!-- <script src="assets/js/app.js"></script> --->
     </body>
     <script>
         const token = document.head
@@ -296,36 +298,34 @@
         // window.onload = history.back()
         let main_content = document.querySelector("#main-content");
 
-        //teste de roteamento
-        window.addEventListener('popstate', rotear)
-        window.addEventListener('load', rotear)
-        function rotear(){
-            var caminho = window.location.pathname
-            console.log(caminho)
-            if(caminho === 'clientes'){
-                viewCli()
-            }
-        }
-
         function cadastrarCli() {
-            history.pushState({}, null, "/clientes");
-            let clientes = "componentes/cliente/cadastroCliente.html";
-            let clientesjs = "assets/js/cliente/clientes.js";
-            render(main_content, clientes, clientesjs);
+           // history.pushState({}, null, "/clientes");
+            let cadastroCli = "componentes/cliente/cadastroCliente.html";
+            let cadastroClijs = "assets/js/cliente/clientes.js";
+            render(main_content, cadastroCli, cadastroClijs);
         }
 
         function viewCli() {
-            history.pushState({}, null, "/clientes");
+           //history.pushState({}, null, "/clientes");
             let clientes = "componentes/cliente/clientes.html";
             let clientesjs = "assets/js/cliente/clientesTable.js";
             render(main_content, clientes, clientesjs);
         }
 
+        //window.onload = viewFunc()
         function viewFunc() {
             let funcionarios = "componentes/funcionario/funcionarios.html";
             let funcionariosjs = "assets/js/funcionario/funcionarios.js";
 
             render(main_content, funcionarios, funcionariosjs);
         }
+
+        function cadastrarFunc(){
+            let cadastroFunc = "componentes/funcionario/cadastroFuncionario.html";
+            let cadastroFuncjs = "assets/js/componentes.js";
+
+            render(main_content, cadastroFunc, cadastroFuncjs);
+        }
+
     </script>
 </html>
