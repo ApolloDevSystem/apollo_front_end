@@ -305,6 +305,15 @@
             render(main_content, cadastroCli, cadastroClijs);
         }
 
+        function cadastrarServ() {
+            //history.pushState({}, null, "/servico");
+            main_content.textContent = "";
+            let servico = "componentes/servico/cadastroServico.html";
+            let servicojs = "assets/js/servico/servico.js";
+            render(main_content, servico, servicojs);
+            
+        }
+
         function viewCli() {
            //history.pushState({}, null, "/clientes");
             let clientes = "componentes/cliente/clientes.html";
