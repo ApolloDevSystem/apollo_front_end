@@ -47,3 +47,12 @@ a{
 body, .header{
   background-color: #f0f2f5;
 }
+
+.titulo{
+  color: #0A2864;
+  font-weight: bold;
+}
+
+.thead{
+  background-color: #D9D9D9;
+}

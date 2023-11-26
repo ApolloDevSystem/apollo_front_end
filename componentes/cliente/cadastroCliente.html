@@ -1,94 +1,144 @@
-
 <body>
-  <div class="container">
-      <div>
-          <h3>Cliente</h3>
-          <div class="row">
+    <div class="container">
+        <div>
+            <h3 class="titulo">Cadastrar Cliente</h3>
+            <div class="row">
+                <div class="col">
+                    <div class="form-floating mb-3">
+                        <input
+                            class="form-control"
+                            id="inputNomeCliente"
+                            style="background-color: #d9d9d9"
+                        />
+                        <label for="inputNomeCliente">Nome do cliente</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-floating mb-3">
+                        <input
+                            class="form-control"
+                            id="inputCPF"
+                            style="background-color: #d9d9d9"
+                        />
+                        <label for="inputCPF">CPF</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-floating mb-3">
+                        <input
+                            class="form-control"
+                            id="inputTelefone"
+                            style="background-color: #d9d9d9"
+                        />
+                        <label for="inputTelefone">Número de Telefone</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-floating mb-3">
+                        <input
+                            class="form-control"
+                            id="inputEmail"
+                            style="background-color: #d9d9d9"
+                        />
+                        <label for="inputEmail">Email</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+
+        <h3 class="titulo">Endereço Padrão</h3>
+        <div class="row">
             <div class="col">
                 <div class="form-floating mb-3">
-                    <input class="form-control" id="inputNomeCliente" style="background-color: #D9D9D9;">
-                    <label for="inputNomeCliente">Nome do cliente</label>
+                    <input
+                        class="form-control"
+                        id="inputBairro"
+                        style="background-color: #d9d9d9"
+                    />
+                    <label for="inputBairro">Bairro</label>
                 </div>
             </div>
             <div class="col">
                 <div class="form-floating mb-3">
-                    <input class="form-control" id="inputCPF" style="background-color: #D9D9D9;">
-                    <label for="inputCPF">CPF</label>      
+                    <input
+                        class="form-control"
+                        id="inputRua"
+                        style="background-color: #d9d9d9"
+                    />
+                    <label for="inputRua">Rua / Avenida</label>
                 </div>
             </div>
             <div class="col">
-              <div class="form-floating mb-3">
-                  <input class="form-control" id="inputTelefone" style="background-color: #D9D9D9;">
-                  <label for="inputTelefone">Número de Telefone</label>      
-              </div>
+                <div class="form-floating mb-3">
+                    <input
+                        class="form-control"
+                        id="inputNumero"
+                        style="background-color: #d9d9d9"
+                    />
+                    <label for="inputNumero">Número</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-floating mb-3">
+                    <textarea
+                        class="form-control"
+                        id="inputReferencias"
+                        style="height: 100px; background-color: #d9d9d9"
+                    ></textarea>
+                    <label for="inputReferencias"
+                        >Referências / Descrição do prédio</label
+                    >
+                </div>
             </div>
             <div class="col">
-              <div class="form-floating mb-3">
-                  <input class="form-control" id="inputEmail" style="background-color: #D9D9D9;">
-                  <label for="inputEmail">Email</label>      
-              </div>
+                <div class="form-floating mb-3">
+                    <input
+                        class="form-control"
+                        id="inputComplemento"
+                        style="background-color: #d9d9d9"
+                    />
+                    <label for="inputComplemento">Complemento</label>
+                </div>
             </div>
-          </div>
-      </div>
-      <hr>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-check">
+                    <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="checkCasa"
+                    />
+                    <label class="form-check-label" for="checkCasa">
+                        Casa
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="checkTrabalho"
+                    />
+                    <label class="form-check-label" for="checkTrabalho">
+                        Trabalho
+                    </label>
+                </div>
+            </div>
+        </div>
 
-      <h3>Endereço Padrão</h3>
-      <div class="row">
-        <div class="col">
-            <div class="form-floating mb-3">
-                <input class="form-control" id="inputBairro" style="background-color: #D9D9D9;">
-                <label for="inputBairro">Bairro</label>
-            </div>
-        </div>
-        <div class="col">
-            <div class="form-floating mb-3">
-                <input class="form-control" id="inputRua" style="background-color: #D9D9D9;">
-                <label for="inputRua">Rua / Avenida</label>      
-            </div>
-        </div>
-        <div class="col">
-            <div class="form-floating mb-3">
-                <input class="form-control" id="inputNumero" style="background-color: #D9D9D9;">
-                <label for="inputNumero">Número</label>      
-            </div>
-        </div>
+        <br />
+        <button id="btnAddEndereco" class="btn btn-outline-success">
+            Adicionar outro endereço
+        </button>
+        <div id="novoEnd"></div>
+        <br /><br />
+        <button id="btnCadastrar" class="btn btn-success">
+            Cadastrar Cliente
+        </button>
     </div>
-    <div class="row">
-        <div class="col">
-          <div class="form-floating mb-3">
-              <textarea class="form-control" id="inputReferencias" style="height: 100px; background-color: #D9D9D9;"></textarea>
-              <label for="inputReferencias">Referências / Descrição do prédio</label>      
-          </div>
-        </div>
-        <div class="col">
-            <div class="form-floating mb-3">
-                <input class="form-control" id="inputComplemento" style="background-color: #D9D9D9;">
-                <label for="inputComplemento">Complemento</label>      
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="checkCasa">
-                <label class="form-check-label" for="checkCasa">
-                    Casa
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="checkTrabalho">
-                <label class="form-check-label" for="checkTrabalho">
-                    Trabalho
-                </label>
-            </div>
-        </div>
-    </div>
-
-    <br>
-    <button id="btnAddEndereco">Adicionar outro endereço</button>
-    <div id = "novoEnd"></div>
-    <br><br>
-    <button id="btnCadastrar">Cadastrar Cliente</button>
-
-  </div>
 </body>
