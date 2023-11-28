@@ -2,8 +2,10 @@ function carregarConteudo(rota) {
 
     switch (rota) {
         case '/clientes':
-            console.log("aqui")
+            console.log("Aqui")
             break;
+        case '/servicos':
+            console.log("Aqui")
         // Adicione mais casos conforme necessário
         default:
             window.location.href = "index.html";
