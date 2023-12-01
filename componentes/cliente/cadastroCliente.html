@@ -46,9 +46,38 @@
             </div>
         </div>
         <hr />
-
         <h3 class="titulo">Endereço Padrão</h3>
         <div class="row">
+            <div class="col">
+                <div class="form-floating mb-3">
+                    <input
+                        class="form-control"
+                        id="inputCep"
+                        style="background-color: #d9d9d9"
+                    />
+                    <label for="inputCep">CEP</label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-floating mb-3">
+                    <input
+                        class="form-control"
+                        id="inputUF"
+                        style="background-color: #d9d9d9"
+                    />
+                    <label for="inputUF">UF</label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-floating mb-3">
+                    <input
+                        class="form-control"
+                        id="inputCidade"
+                        style="background-color: #d9d9d9"
+                    />
+                    <label for="inputCidade">Cidade</label>
+                </div>
+            </div>
             <div class="col">
                 <div class="form-floating mb-3">
                     <input
@@ -63,10 +92,10 @@
                 <div class="form-floating mb-3">
                     <input
                         class="form-control"
-                        id="inputRua"
+                        id="inputLogradouro"
                         style="background-color: #d9d9d9"
                     />
-                    <label for="inputRua">Rua / Avenida</label>
+                    <label for="inputLogradouro">Logradouro</label>
                 </div>
             </div>
             <div class="col">
@@ -93,49 +122,44 @@
                     >
                 </div>
             </div>
-            <div class="col">
-                <div class="form-floating mb-3">
-                    <input
-                        class="form-control"
-                        id="inputComplemento"
-                        style="background-color: #d9d9d9"
-                    />
-                    <label for="inputComplemento">Complemento</label>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
+            <div class="col" id="checkboxes">
                 <div class="form-check">
                     <input
                         class="form-check-input"
                         type="checkbox"
                         value=""
                         id="checkCasa"
+                        name="tipoEnderecoPadrao"
                     />
-                    <label class="form-check-label" for="checkCasa">
-                        Casa
-                    </label>
+                    <label class="form-check-label" for="checkCasa"> Casa </label>
                 </div>
                 <div class="form-check">
                     <input
                         class="form-check-input"
                         type="checkbox"
                         value=""
-                        id="checkTrabalho"
+                        id="checkPredio"
+                        name="tipoEnderecoPadrao"
                     />
-                    <label class="form-check-label" for="checkTrabalho">
-                        Trabalho
-                    </label>
+                    <label class="form-check-label" for="checkTrabalho"> Prédio </label>
+                </div>
+                <div class="form-check">
+                    <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="checkEmpresa"
+                        name="tipoEnderecoPadrao"
+                    />
+                    <label class="form-check-label" for="checkEmpresa"> Empresa </label>
                 </div>
             </div>
         </div>
-
         <br />
+        <div id="novoEnd"></div>
         <button id="btnAddEndereco" class="btn btn-outline-success">
             Adicionar outro endereço
         </button>
-        <div id="novoEnd"></div>
         <br /><br />
         <button id="btnCadastrar" class="btn btn-success">
             Cadastrar Cliente

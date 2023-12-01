@@ -14,6 +14,7 @@
         />
         <link rel="stylesheet" href="assets/css/sidebar.css" />
         <link rel="stylesheet" href="assets/css/style.css" />
+        <link rel="stylesheet" href="assets/css/modal.css" />
     </head>
 
     <body id="body-pd">
@@ -170,8 +171,10 @@
                                 aria-labelledby="dropdownFunc"
                             >
                                 <li>
-                                    <a class="dropdown-item" href="#"
-                                    onclick="cadastrarFunc()"
+                                    <a
+                                        class="dropdown-item"
+                                        href="#"
+                                        onclick="cadastrarFunc()"
                                         >Cadastrar Funcionário</a
                                     >
                                 </li>
@@ -278,11 +281,37 @@
         </div>
         <!--Container Main start-->
         <div class="height-100">
+            <!-- MODAL -->
+            <div
+            class="container card border-0 bg-transparent"
+            id="card-modal"
+        >
+            <div
+                class="card border-0 w-25 py-5 mx-auto"
+                id="card-card-modal"
+            >
+                <div class="mx-auto">
+                    <img src="icons/warning.png" alt="" />
+                </div>
+                <div
+                    class="mx-auto mt-4 w-100 text-center"
+                    id="mensagem-erro"
+                >
+                    Erro de tal coisa
+                </div>
+                <button class="btn btn-danger mt-3" id="fechar-modal">
+                    Fechar
+                </button>
+            </div>
+        </div>
             <div id="main-content" class="mt-4"></div>
         </div>
 
         <!-- jQuery (antes do Bootstrap) -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
 
         <!-- Bootstrap JS -->
         <script src="assets/js/bootstrap.bundle.min.js"></script>
@@ -299,9 +328,9 @@
         let main_content = document.querySelector("#main-content");
 
         function cadastrarCli() {
-           // history.pushState({}, null, "/clientes");
+            // history.pushState({}, null, "/clientes");
             let cadastroCli = "componentes/cliente/cadastroCliente.html";
-            let cadastroClijs = "assets/js/cliente/clientes.js";
+            let cadastroClijs = "assets/js/cliente/cadastroCli.js";
             render(main_content, cadastroCli, cadastroClijs);
         }
 
@@ -311,17 +340,16 @@
             let servico = "componentes/servico/cadastroServico.html";
             let servicojs = "assets/js/servico/servico.js";
             render(main_content, servico, servicojs);
-            
         }
 
-        function viewServ(){
+        function viewServ() {
             let listaServico = "componentes/servico/listaServico.html";
             let tableservico = "assets/js/servico/servico.js";
             render(main_content, listaServico, tableservico);
         }
 
         function viewCli() {
-           //history.pushState({}, null, "/clientes");
+            //history.pushState({}, null, "/clientes");
             let clientes = "componentes/cliente/clientes.html";
             let clientesjs = "assets/js/cliente/clientesTable.js";
             render(main_content, clientes, clientesjs);
@@ -335,12 +363,13 @@
             render(main_content, funcionarios, funcionariosjs);
         }
 
-        function cadastrarFunc(){
-            let cadastroFunc = "componentes/funcionario/cadastroFuncionario.html";
-            let cadastroFuncjs = "assets/js/componentes.js";
+        window.onload = cadastrarFunc();
+        function cadastrarFunc() {
+            let cadastroFunc =
+                "componentes/funcionario/cadastroFuncionario.html";
+            let cadastroFuncjs = "assets/js/funcionario/cadastroFunc.js";
 
             render(main_content, cadastroFunc, cadastroFuncjs);
         }
-
     </script>
 </html>
