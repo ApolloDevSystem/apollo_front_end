@@ -1,3 +1,4 @@
+(function() {
 let formularioCriado = false;
 const divEnderecoAdicional = document.getElementById('novoServico');
 let con = 0;
@@ -104,7 +105,7 @@ function scrollToBottom() {
     const element = document.documentElement || document.body;
     element.scrollTop = element.scrollHeight;
 }
-
+})();
 
 
 

@@ -1,6 +1,7 @@
 mascaras()
 
-let formCriado = false
+(function() {
+let formCriado = false;
 const divEnderecoAdicional = document.getElementById('novoEnd');
 
 checkboxFormat("#checkboxes")
@@ -318,3 +319,4 @@ function mascaras() {
     });
 
 }
+})();
