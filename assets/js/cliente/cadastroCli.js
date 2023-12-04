@@ -1,4 +1,3 @@
-(function() {
 let formCriado = false
 const divEnderecoAdicional = document.getElementById('novoEnd');
 
@@ -15,4 +14,3 @@ const btnAddEnd = document.getElementById('btnAddEndereco').addEventListener('cl
         formCriado = false
     }
 });
-})();
