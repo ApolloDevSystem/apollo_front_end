@@ -1,3 +1,4 @@
+(function() {
 let formularioCriado = false;
 const divEnderecoAdicional = document.getElementById('novoServico');
 let con = 0;
@@ -5,7 +6,7 @@ let con = 0;
 document.getElementById('btnAddServico').addEventListener('click', function() {
 
     if (con<4) {
-        createForm();
+        createForm(); 
         scrollToBottom();
         con++;
     }
@@ -104,7 +105,7 @@ function scrollToBottom() {
     const element = document.documentElement || document.body;
     element.scrollTop = element.scrollHeight;
 }
-
+})();
 
 
 

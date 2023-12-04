@@ -1,7 +1,10 @@
+
+// Essa "(function() { })();" serve para que as variáveis aqui declaradas sejam local e não global, isso previne erros de redeclaração
+(function() {
 let formularioCriado = false;
 const divEnderecoAdicional = document.getElementById('novoEnd');
 
-
+ 
 document.getElementById('btnAddEndereco').addEventListener('click', function () {
   if (!formularioCriado) {
     enderecoAdcional()
@@ -126,39 +129,29 @@ function createForm() {
   const divCol3 = createElement('div', { class: 'col' });
   appendElement(divRow3, divCol3);
 
-  // Criar form-check para checkboxes
   const formCheck1 = createElement('div', { class: 'form-check' });
   appendElement(divCol3, formCheck1);
 
-  // Criar checkbox "Casa"
-  const checkboxCasa = createElement('input', {
+  const radioCasa = createElement('input', {
     class: 'form-check-input',
-    type: 'checkbox',
-    value: '',
-    id: 'checkCasaAdc',
+    type: 'radio',
+    value: 'Casa', // Adicione valores para identificar cada opção
+    id: 'radioCasaAdc',
+    name: 'tipoEnderecoAdc', // Certifique-se de que todos os radios compartilham o mesmo nome
   });
-  appendElement(formCheck1, checkboxCasa);
-
-  // Criar label para "Casa"
-  const labelCasa = createElement('label', { class: 'form-check-label', for: 'checkCasaAdc' });
-  labelCasa.textContent = 'Casa';
-  appendElement(formCheck1, labelCasa);
-
-  // Criar form-check para checkboxes
-  const formCheck2 = createElement('div', { class: 'form-check' });
-  appendElement(divCol3, formCheck2);
-
-  // Criar checkbox "Trabalho"
-  const checkboxTrabalho = createElement('input', {
+  appendElement(formCheck1, radioCasa);
+  
+  const radioTrabalho = createElement('input', {
     class: 'form-check-input',
-    type: 'checkbox',
-    value: '',
-    id: 'checkTrabalhoAdc',
+    type: 'radio',
+    value: 'Trabalho',
+    id: 'radioTrabalhoAdc',
+    name: 'tipoEnderecoAdc',
   });
-  appendElement(formCheck2, checkboxTrabalho);
+  appendElement(formCheck2, radioTrabalho);
+  
 
-  // Criar label para "Trabalho"
-  const labelTrabalho = createElement('label', { class: 'form-check-label', for: 'checkTrabalhoAdc' });
+  const labelTrabalho = createElement('label', { class: 'form-check-label', for: 'radioTrabalhoAdc' });
   labelTrabalho.textContent = 'Trabalho';
   appendElement(formCheck2, labelTrabalho);
 
@@ -171,8 +164,6 @@ function createForm() {
     removeForm();
   };
   appendElement(mainContainer, btnRemoverEndereco);
-
-
 }
 
 function removeForm() {
@@ -194,3 +185,4 @@ function removeForm() {
   // Exibe o botão de adicionar novamente
   document.getElementById('btnAddEndereco').style.display = 'block';
 }
+})();

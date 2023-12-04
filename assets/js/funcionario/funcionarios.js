@@ -6,7 +6,7 @@ function carregar(){
     const divAdm = document.querySelector("#adm");
     adms(divAdm)
 }
-
+ 
 function funcionarios(div) {
     //ajax para servidor php
     fetch('http://127.0.0.1:8000/api/funcionarios', {
