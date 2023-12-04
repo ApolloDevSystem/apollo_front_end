@@ -6,7 +6,7 @@ let con = 0;
 document.getElementById('btnAddServico').addEventListener('click', function() {
 
     if (con<4) {
-        createForm();
+        createForm(); 
         scrollToBottom();
         con++;
     }

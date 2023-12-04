@@ -1,12 +1,10 @@
-<<<<<<< HEAD
-=======
+
 // Essa "(function() { })();" serve para que as variáveis aqui declaradas sejam local e não global, isso previne erros de redeclaração
->>>>>>> main
 (function() {
 let formularioCriado = false;
 const divEnderecoAdicional = document.getElementById('novoEnd');
 
-
+ 
 document.getElementById('btnAddEndereco').addEventListener('click', function () {
   if (!formularioCriado) {
     enderecoAdcional()
