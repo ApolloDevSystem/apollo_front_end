@@ -57,7 +57,8 @@ function obterDadosFormularioFuncionario() {
         numero: inputTelefone,
         email: inputEmail,
         cpf: inputCPF,
-        diaria: inputDiaria.replace('R$', '').replace(',', '.')
+        diaria: inputDiaria.replace('R$', '').replace('.', '').replace(',', '.'),
+        enderecos: null
     }
 
     console.log('Dados do formulário:', funcionario);
@@ -123,22 +124,21 @@ document.getElementById('btnCadastrar').addEventListener('click', async function
             // Obtém os dados de endereço e verifica se há pelo menos um endereço
             const enderecoPrincipal = obterDadosFormularioEndereco();
             let enderecoAdicional = null
-            if(formCriado)
+            if (formCriado)
                 enderecoAdicional = obterDadosFormularioEndereco('1');
-            
+
 
             if (enderecoPrincipal || enderecoAdicional) {
                 // Cria o objeto a ser enviado para a API
+                funcionario.enderecos = [enderecoPrincipal, enderecoAdicional].filter(Boolean)
                 const dadosParaAPI = {
                     funcionario: funcionario,
-                    enderecos: [enderecoPrincipal, enderecoAdicional].filter(Boolean) // Filtra endereços nulos (caso algum não tenha sido preenchido)
                 };
 
                 // Aqui você deve chamar sua função de envio para a API, passando o objeto "dadosParaAPI"
-                window.alert('Dados a serem enviados para a API:', dadosParaAPI);
+                console.log('Dados a serem enviados para a API:', dadosParaAPI);
 
-                const id = await post('funcionario', dadosParaAPI)
-                console.log(id)
+                post('funcionario', dadosParaAPI)
             } else {
                 window.alert("Preencha pelo menos um endereço");
             }
@@ -186,7 +186,7 @@ async function get(rota, dado) {
 
 async function post(rota, dado) {
     try {
-        const response = await fetch('http://127.0.0.1:8000/api/criar-' + rota, {
+        const response = await fetch('http://127.0.0.1:8000/api/criar-'+rota, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -195,10 +195,12 @@ async function post(rota, dado) {
             mode: 'cors',
             body: JSON.stringify(dado)
         });
+        console.log('Resposta do servidor:', response);
         const data = await response.json();
         return data;
     } catch (error) {
-        console.error(error);
+        console.error('Erro na requisição:', error);
+        throw error;  // Isso permite que o erro seja propagado para o código que chamou a função post
     }
 }
 
@@ -255,7 +257,7 @@ function apiCep(cep, comp = "") {
                 document.getElementById('inputUF' + comp).value = "";
                 document.getElementById('inputCidade' + comp).value = "";
                 document.getElementById('inputBairro' + comp).value = "";
-                document.getElementById('inputLogradouro+comp').value = "";
+                document.getElementById('inputLogradouro'+comp).value = "";
                 document.getElementById('inputCep' + comp).style = "border-color: red; border-width: 1px;"
                 //window.alert("CEP INEXISTENTE")
                 criarModal("CEP INEXISTENTE")
@@ -273,7 +275,7 @@ function apiCep(cep, comp = "") {
             console.error("Erro ao obter informações do CEP:", error);
             //window.alert("CEP INEXISTENTE")
             criarModal("CEP INEXISTENTE")
-            document.getElementById('inputCep').value = ""
+            document.getElementById('inputCep' + comp).value = ""
         });
 }
 
