@@ -1,3 +1,4 @@
+(function() {
 let formularioCriado = false;
 const divEnderecoAdicional = document.getElementById('novoEnd');
 
@@ -194,3 +195,4 @@ function removeForm() {
   // Exibe o botão de adicionar novamente
   document.getElementById('btnAddEndereco').style.display = 'block';
 }
+})();
