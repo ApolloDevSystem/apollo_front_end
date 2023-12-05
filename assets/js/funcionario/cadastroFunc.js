@@ -1,12 +1,10 @@
-mascaras()
-
 (function() {
+    mascaras()
 let formCriado = false;
 const divEnderecoAdicional = document.getElementById('novoEnd');
 
-checkboxFormat("#checkboxes")
-
-const btnAddEnd = document.getElementById('btnAddEndereco').addEventListener('click', function () {
+const btnAddEnd = document.getElementById('btnAddEndereco')
+btnAddEnd.addEventListener('click', function () {
     if (!formCriado) {
         const endereco = "componentes/endereco.html"
         render(divEnderecoAdicional, endereco, "assets/js/endereco/endereco.js")
@@ -18,33 +16,6 @@ const btnAddEnd = document.getElementById('btnAddEndereco').addEventListener('cl
         formCriado = false
     }
 });
-
-function checkboxFormat(grupo) {
-    // Adiciona um event listener aos checkboxes para garantir que apenas um seja selecionado
-    const checkboxes = document.querySelector(grupo).querySelectorAll('.form-check-input');
-    checkboxes.forEach(function (checkbox) {
-        checkbox.addEventListener('change', function () {
-            checkboxes.forEach(function (otherCheckbox) {
-                if (otherCheckbox !== checkbox) {
-                    otherCheckbox.removeAttribute('required');
-                }
-            });
-
-            if (checkbox.checked) {
-                checkbox.setAttribute('required', true);
-            } else {
-                checkbox.removeAttribute('required');
-            }
-
-            if (checkbox.checked) {
-                // Se o checkbox está marcado, definimos o tipoEndereco
-                const tipoEnderecoInput = document.getElementById(`tipoEndereco`);
-                console.log(checkbox.value)
-                tipoEnderecoInput.value = checkbox.value;
-            }
-        });
-    });
-}
 
 function obterDadosFormularioFuncionario() {
     const inputNome = document.getElementById('inputNome').value
@@ -77,18 +48,18 @@ function obterDadosFormularioEndereco(num = "") {
     const numero = document.getElementById('inputNumero' + num).value;
     const referencia = document.getElementById('inputReferencias' + num).value;
 
-    // Obtém o valor do checkbox selecionado
+    // Obtém o valor do input radio selecionado
     let tipoEndereco;
-    const checkboxCasa = document.getElementById('checkCasa' + num);
-    const checkboxPredio = document.getElementById('checkPredio' + num);
-    const checkboxEmpresa = document.getElementById('checkEmpresa' + num);
+    const radioCasa = document.getElementById('radioCasa' + num);
+    const radioPredio = document.getElementById('radioPredio' + num);
+    const radioEmpresa = document.getElementById('radioEmpresa' + num);
 
-    if (checkboxCasa.checked) {
-        tipoEndereco = checkboxCasa.value;
-    } else if (checkboxPredio.checked) {
-        tipoEndereco = checkboxPredio.value;
-    } else if (checkboxEmpresa.checked) {
-        tipoEndereco = checkboxEmpresa.value;
+    if (radioCasa.checked) {
+        tipoEndereco = radioCasa.value;
+    } else if (radioPredio.checked) {
+        tipoEndereco = radioPredio.value;
+    } else if (radioEmpresa.checked) {
+        tipoEndereco = radioEmpresa.value;
     } else {
         window.alert("selecione um complemento")
         return null
@@ -96,8 +67,8 @@ function obterDadosFormularioEndereco(num = "") {
 
     // Monta um objeto com os dados
     const endereco = {
-        cep: cepGet,
-        uf: uf,
+        CEP: cepGet,
+        UF: uf,
         cidade: cidade,
         bairro: bairro,
         logradouro: logradouro,
@@ -115,6 +86,7 @@ function obterDadosFormularioEndereco(num = "") {
 
 //EVENTOS PARA API
 document.getElementById('btnCadastrar').addEventListener('click', async function () {
+    event.preventDefault()
     // Verifica se o formulário é válido
     const formulario = document.querySelector('form');
     if (formulario.checkValidity()) {
@@ -209,7 +181,7 @@ async function post(rota, dado) {
 //checa existencia do cpf
 const inputCpf = document.getElementById('inputCPF');
 inputCpf.addEventListener('keyup', async () => {
-    if (inputCpf.value.length === 14) {
+    if (inputCpf.value.length === 14 && !inputCpf.value.includes('_')) {
         try {
             const existe = await get('funcionarioCpf', inputCpf.value);
             console.log(existe.funcionarios.length)
@@ -302,7 +274,7 @@ function criarModal(info) {
 function mascaras() {
     $('#inputCPF').inputmask('999.999.999-99', { reverse: true });
     $('#inputCep').inputmask('99999-999');
-    $('#inputTelefone').inputmask('(99) 9 9999-999');
+    $('#inputTelefone').inputmask('(99) 9 9999-9999');
     $('#inputDiaria').inputmask({
         alias: 'numeric',
         radixPoint: ',',
@@ -317,6 +289,5 @@ function mascaras() {
             return value.replace('.', '');
         }
     });
-
 }
 })(); 
