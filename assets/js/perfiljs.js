@@ -55,7 +55,7 @@
 
         if (inputsvalue[0] !== formData.get('nome') || inputsvalue[1] !== formData.get('telefone') || inputsvalue[2] !== formData.get('endereco') || inputsvalue[3] !== formData.get('desde')) {
             editarCliente(token2, formData, id)
-            
+
         }
 
         //trocar atributos do button
@@ -81,7 +81,7 @@
         //alimentação do histórico 
         //import('js/apiConsumo.js').then(({ get }) => {
         /////kkkkkk mo trampo pra pegar os serviços vai vendo kkkk
-        
+
     }
 
     function alimentaDados() {
@@ -99,21 +99,23 @@
         let rota = 'endereco'
         get(rota, id).then(data => {
             if (data.length == 1) {
-                //colocar endereço adicional vazio
+                const endAdc = document.getElementById('endAdc')
+                endAdc.innerHTML =  ""
+                enderecoAdcVazio(endAdc)
                 console.log("teste")
             }
             let i = 0
             data.forEach(datinha => {
-                if(i == 0) comp = ''
+                if (i == 0) comp = ''
                 else comp = i
-                document.getElementById('CEP'+comp).setAttribute('value', datinha.CEP)
-                document.getElementById('UF'+comp).setAttribute('value', datinha.UF)
-                document.getElementById('cidade'+comp).setAttribute('value', datinha.cidade)
-                document.getElementById('logradouro'+comp).setAttribute('value', datinha.logradouro)
-                document.getElementById('numeroEnd'+comp).setAttribute('value', datinha.numero)
-                document.getElementById('bairro'+comp).setAttribute('value', datinha.bairro)
-                document.getElementById('complemento'+comp).setAttribute('value', datinha.complemento)
-                document.getElementById('referencia'+comp).setAttribute('value', datinha.referencia)
+                document.getElementById('CEP' + comp).setAttribute('value', datinha.CEP)
+                document.getElementById('UF' + comp).setAttribute('value', datinha.UF)
+                document.getElementById('cidade' + comp).setAttribute('value', datinha.cidade)
+                document.getElementById('logradouro' + comp).setAttribute('value', datinha.logradouro)
+                document.getElementById('numeroEnd' + comp).setAttribute('value', datinha.numero)
+                document.getElementById('bairro' + comp).setAttribute('value', datinha.bairro)
+                document.getElementById('complemento' + comp).setAttribute('value', datinha.complemento)
+                document.getElementById('referencia' + comp).setAttribute('value', datinha.referencia)
                 i++
             })
 
@@ -187,3 +189,30 @@ let rota1 = 'servico'
         //})
 
 */
+
+function enderecoAdcVazio(div) {
+    const divCol = document.createElement("div");
+    divCol.className = "my-5 div-saltar mx-3 p-0";
+
+    const divCard = document.createElement("div");
+    divCard.className = "card h-100 border-0";
+
+    const divCardBody = document.createElement("div");
+    divCardBody.className = "card-body d-flex flex-column align-items-center justify-content-md-center pt-4";
+
+    const paragraph = document.createElement("p");
+    paragraph.className = "titulo mb-3";
+    paragraph.textContent = "SEM ENDEREÇO ADICIONAL CADASTRADO";
+
+    const button = document.createElement("button");
+    button.className = "btn btn-success";
+    button.textContent = "Cadastrar";
+    button.addEventListener('click', () => criarModal("FUNÇÂO AINDA NÂO IMPLEMENTADA") /* a implementar :) */)
+
+    divCardBody.appendChild(paragraph);
+    divCardBody.appendChild(button);
+    divCard.appendChild(divCardBody);
+    divCol.appendChild(divCard);
+    div.appendChild(divCol);
+
+}
