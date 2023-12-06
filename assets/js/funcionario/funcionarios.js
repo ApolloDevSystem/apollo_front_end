@@ -101,8 +101,8 @@ function bloco(div, dados_func) {
     col.addEventListener('click', () => {
         document.cookie = "id=" + dados_func.id + "; path=/";
 
-        let perfil = "componentes/perfil.html";
-        let perfiljs = "assets/js/perfiljs.js"
+        let perfil = "componentes/perfil/perfilFuncionario.html";
+        let perfiljs = "assets/js/perfilFunc.js"
         render(document.getElementById('main-content'), perfil, perfiljs)
     })
 

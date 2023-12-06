@@ -29,8 +29,6 @@
         //libera inputs 
         inputs.forEach(e => {
             inputsvalue[i] = e.value
-            console.log(inputsvalue[i])
-            console.log(e.value)
             i++
             e.removeAttribute('disabled')
         })
@@ -41,7 +39,7 @@
                 btnEditar.textContent = 'salvar'
                 btnEditar.classList.remove('btn-primary')
                 btnEditar.classList.add('btn-danger')
-                btnEditar.EditaraddEventListener('click', salvar);
+                btnEditar.addEventListener('click', salvar);
             })
         })
 
@@ -51,6 +49,9 @@
 
     function salvar() {
         //mandar dados
+
+        criarModal("FUNÇÃO AINDA NÃO IMPLEMENTADA")
+        return
         const formData = new FormData(perfilForm)
 
         if (inputsvalue[0] !== formData.get('nome') || inputsvalue[1] !== formData.get('telefone') || inputsvalue[2] !== formData.get('endereco') || inputsvalue[3] !== formData.get('desde')) {
@@ -84,23 +85,22 @@
 
     }
 
-    function alimentaDados() {
-        let rota = 'funcionario'
-        get(rota, id).then(data => {
+    async function alimentaDados() {
+        let rota = 'cliente'
+        await get(rota, id).then(data => {
             document.getElementById('nome').setAttribute('value', data.nome)
             document.getElementById('numero').setAttribute('value', data.numero)
-            document.getElementById('diaria').setAttribute('value', data.diaria)
             document.getElementById('email').setAttribute('value', data.email)
             document.getElementById('cpf').setAttribute('value', data.cpf)
         })
     }
 
-    function alimentaEnderecos() {
+    async function alimentaEnderecos() {
         let rota = 'endereco'
-        get(rota, id).then(data => {
+        await get(rota, id).then(data => {
             if (data.length == 1) {
                 const endAdc = document.getElementById('endAdc')
-                endAdc.innerHTML =  ""
+                endAdc.innerHTML = ""
                 enderecoAdcVazio(endAdc)
                 console.log("teste")
             }
@@ -120,28 +120,6 @@
             })
 
         })
-    }
-
-    async function get(rota, dado) {
-        try {
-            const response = await fetch(`http://127.0.0.1:8000/api/${rota}/` + dado, {
-                method: 'GET',
-                headers: {
-                    'X-CSRF-TOKEN': token
-                },
-                mode: 'cors'
-            });
-
-            if (!response.ok) {
-                throw new Error(`Erro na requisição: ${response.status} - ${response.statusText}`);
-            }
-
-            const data = await response.json();
-            return data;
-        } catch (error) {
-            console.error('Erro na requisição:', error.message);
-            throw error;
-        }
     }
 })();
 
@@ -189,30 +167,3 @@ let rota1 = 'servico'
         //})
 
 */
-
-function enderecoAdcVazio(div) {
-    const divCol = document.createElement("div");
-    divCol.className = "my-5 div-saltar mx-3 p-0";
-
-    const divCard = document.createElement("div");
-    divCard.className = "card h-100 border-0";
-
-    const divCardBody = document.createElement("div");
-    divCardBody.className = "card-body d-flex flex-column align-items-center justify-content-md-center pt-4";
-
-    const paragraph = document.createElement("p");
-    paragraph.className = "titulo mb-3";
-    paragraph.textContent = "SEM ENDEREÇO ADICIONAL CADASTRADO";
-
-    const button = document.createElement("button");
-    button.className = "btn btn-success";
-    button.textContent = "Cadastrar";
-    button.addEventListener('click', () => criarModal("FUNÇÂO AINDA NÂO IMPLEMENTADA") /* a implementar :) */)
-
-    divCardBody.appendChild(paragraph);
-    divCardBody.appendChild(button);
-    divCard.appendChild(divCardBody);
-    divCol.appendChild(divCard);
-    div.appendChild(divCol);
-
-}

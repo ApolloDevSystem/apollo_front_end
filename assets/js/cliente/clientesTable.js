@@ -34,9 +34,12 @@ function carregarTabela(pesquisaInp = null){
                 linha.setAttribute('scope', 'row')
                 linha.addEventListener('click', (event) =>{
                     event.preventDefault()
-                    document.cookie = "id=" + e.id + "; path=/";
-                    div.innerHTML = " "
+                    document.cookie = "id=" + e.IDCliente + "; path=/";
+             
                     //aplicar mudança para perfil de cliente
+                    clientePerfil = "componentes/perfil/perfilCliente.html"
+                    clientePerfiljs = "assets/js/perfilCli.js"
+                    render(document.getElementById('main-content'), clientePerfil, clientePerfiljs)
                 })
                 const tdNome = document.createElement('td')
                 const tdCpf = document.createElement('td')

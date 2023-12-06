@@ -1,6 +1,10 @@
 async function get(rota, dado) {
     try {
-        const response = await fetch(`http://127.0.0.1:8000/api/${rota}/'${dado}'`, {
+        if(typeof dado === "string"){
+            dado = parseInt(dado, 10)
+        }
+
+        const response = await fetch(`http://127.0.0.1:8000/api/${rota}/`+dado, {
             method: 'GET',
             headers: {
                 'X-CSRF-TOKEN': token

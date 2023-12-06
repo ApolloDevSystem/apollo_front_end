@@ -5,5 +5,4 @@
         if (cep1.value.length === 9 && !cep1.value.includes('_'))
             apiCep(cep1.value, '1')
     })
-
 })()
