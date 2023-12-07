@@ -7,7 +7,12 @@
         <title>Apollo-km5</title>
 
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous"
+        />
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
         <link
             rel="stylesheet"
@@ -352,7 +357,7 @@
         function viewCli() {
             //history.pushState({}, null, "/clientes");
             let clientes = "componentes/cliente/clientes.html";
-            let clientesjs = "assets/js/cliente/clientesTable.js";
+            let clientesjs = "assets/js/cliente/clientes.js";
             render(main_content, clientes, clientesjs);
         }
 
@@ -372,12 +377,11 @@
             render(main_content, cadastroFunc, cadastroFuncjs);
         }
 
-        window.onload = perfil
         function perfil() {
             let perfil = "componentes/perfil/perfilCliente.html";
-            let perfiljs = "assets/js/perfilCli.js"
+            let perfiljs = "assets/js/perfilCli.js";
 
-            render(main_content, perfil, perfiljs)
+            render(main_content, perfil, perfiljs);
         }
     </script>
 </html>

@@ -46,7 +46,7 @@ function adms(div) {
 function alimentarFunc(data, div) {
     //opção de criar
     if (data.length === 0)
-        vazio(div)
+        vazio(div, "SEM FUNCIONÁRIOS CADASTRADOS", cadastrarFunc)
     data.forEach(funcionario => {
         funcionario.id = funcionario.IDFuncionario
         bloco(div, funcionario)
@@ -124,31 +124,4 @@ function formatarTelefone(numero) {
         // Número inválido
         return 'Número de telefone inválido';
     }
-}
-
-// botao para redirecionar ao cadastro
-function vazio(div) {
-    const divCol = document.createElement("div");
-    divCol.className = "col-md-4 mb-5 div-saltar mx-3 p-0";
-
-    const divCard = document.createElement("div");
-    divCard.className = "card h-100 border-0";
-
-    const divCardBody = document.createElement("div");
-    divCardBody.className = "card-body d-flex flex-column align-items-center justify-content-md-center pt-4";
-
-    const paragraph = document.createElement("p");
-    paragraph.className = "titulo mb-3";
-    paragraph.textContent = "SEM FUNCIONÁRIOS CADASTRADOS";
-
-    const button = document.createElement("button");
-    button.className = "btn btn-success";
-    button.textContent = "Cadastrar";
-    button.addEventListener('click', () => cadastrarFunc())
-
-    divCardBody.appendChild(paragraph);
-    divCardBody.appendChild(button);
-    divCard.appendChild(divCardBody);
-    divCol.appendChild(divCard);
-    div.appendChild(divCol);
 }
