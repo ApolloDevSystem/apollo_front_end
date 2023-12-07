@@ -1,6 +1,6 @@
-function mascaras() {
+function mascaras(comp = "") {
     $('#inputCPF').inputmask('999.999.999-99', { reverse: true });
-    $('#inputCep').inputmask('99999-999');
+    $('#inputCep'+comp).inputmask('99999-999');
     $('#inputTelefone').inputmask('(99) 9 9999-9999');
     $('#inputDiaria').inputmask({
         alias: 'numeric',

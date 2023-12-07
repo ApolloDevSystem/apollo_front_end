@@ -23,8 +23,6 @@ async function get(rota, dado) {
         throw error;
     }
 }
-
-
 async function post(rota, dado) {
     try {
         const response = await fetch('http://127.0.0.1:8000/api/criar-' + rota, {

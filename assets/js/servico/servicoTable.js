@@ -36,7 +36,7 @@ function carregarTabela(pesquisaInp = null){
                     event.preventDefault()
                     document.cookie = "id=" + e.id + "; path=/";
                     div.innerHTML = " "
-                    //aplicar mudança para perfil de cliente
+                    //aplicar mudança para perfil de serviço (todos os dados)
                 })
                 const tdTiposervico = document.createElement('td')
                 const tdData = document.createElement('td')

@@ -97,7 +97,7 @@
     }
 
     async function alimentaEnderecos() {
-        let rota = 'endereco'
+        let rota = 'endereco-funcionario'
         await get(rota, id).then(data => {
             if (data.length == 1) {
                 const endAdc = document.getElementById('endAdc')
