@@ -1,0 +1,379 @@
+<div class="container shadow-lg bg-light pt-4">
+    <div class="row justify-content-md-center" id="perfil-header">
+        <div class="col-11 ">
+            <h2 class="font-weight-bold m-2 titulo">Dados do Cliente</h2>
+            <button
+                class="btn btn-primary rounded-0 w-100"
+                id="btnEditar"
+                type="submit"
+            >
+                editar
+            </button>
+            <form id="perfil">
+                <div class="form-group">
+                    <div class="row my-3">
+                        <div class="col-6">
+                            <div class="input-group">
+                                <span class="input-group-text">Nome</span>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    name="nome"
+                                    id="nome"
+                                    required
+                                />
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="input-group">
+                                <span class="input-group-text">Telefone</span>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    name="telefone"
+                                    id="numero"
+                                    required
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row my-3">
+                        
+                        <div class="col-7">
+                            <div class="input-group">
+                                <span class="input-group-text">E-mail</span>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    name="email"
+                                    id="email"
+                                    required
+                                />
+                            </div>
+                        </div>
+                        <div class="col-5">
+                            <div class="input-group">
+                                <span class="input-group-text">CPF</span>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    name="cpf"
+                                    id="cpf"
+                                    required
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="accordion col-6" id="accordionEnd">
+                        <div class="rounded-3 shadow bg-light accordion-item">
+                            <p class="accordion-header" id="headerAcc">
+                                <button
+                                    class="accordion-button"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#bodyAcc"
+                                    aria-expanded="true"
+                                    aria-controls="bodyAcc"
+                                >
+                                    <span class="titulo"> Endereco </span>
+                                </button>
+                            </p>
+                            <div
+                                id="bodyAcc"
+                                class="accordion-collapse collapse w-100"
+                                aria-labelledby="headerAcc"
+                                data-bs-parent="#accordionEnd"
+                            >
+                                <div class="accordion-body">
+                                    <div class="row">
+                                        <div class="form-group col-7">
+                                            <div class="input-group">
+                                                <span class="input-group-text"
+                                                    >CEP</span
+                                                >
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="CEP"
+                                                    id="CEP"
+                                                    required
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-5">
+                                            <div class="input-group">
+                                                <span class="input-group-text"
+                                                    >UF</span
+                                                >
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="UF"
+                                                    id="UF"
+                                                    required
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-6">
+                                            <div class="input-group">
+                                                <span class="input-group-text"
+                                                    >Cidade</span
+                                                >
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="cidade"
+                                                    id="cidade"
+                                                    required
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <div class="input-group">
+                                                <span class="input-group-text"
+                                                    >Comp.</span
+                                                >
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="complemento"
+                                                    id="complemento"
+                                                    required
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-7">
+                                            <div class="input-group">
+                                                <span class="input-group-text"
+                                                    >Logradouro</span
+                                                >
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="logradouro"
+                                                    id="logradouro"
+                                                    required
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-5">
+                                            <div class="input-group">
+                                                <span class="input-group-text"
+                                                    >Número</span
+                                                >
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="numeroEnd"
+                                                    id="numeroEnd"
+                                                    required
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-12">
+                                            <div class="input-group">
+                                                <span class="input-group-text"
+                                                    >Bairro</span
+                                                >
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="bairro"
+                                                    id="bairro"
+                                                    required
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-12">
+                                            <div class="input-group">
+                                                <span class="input-group-text"
+                                                    >Referência</span
+                                                >
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="referencia"
+                                                    id="referencia"
+                                                    required
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion col-6" id="accordionEnd1">
+                        <div class="rounded-3 shadow bg-light accordion-item">
+                            <p class="accordion-header" id="headerAcc1">
+                                <button
+                                    class="accordion-button"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#bodyAcc1"
+                                    aria-expanded="true"
+                                    aria-controls="bodyAcc1"
+                                >
+                                    <span class="titulo"
+                                        >Endereco Adicional</span
+                                    >
+                                </button>
+                            </p>
+
+                            <div
+                                id="bodyAcc1"
+                                class="accordion-collapse collapse w-100"
+                                aria-labelledby="headerAcc1"
+                                data-bs-parent="#accordionEnd1"
+                            >
+                                <div class="accordion-body" id="endAdc">
+                                    <div class="row">
+                                        <div class="form-group col-7">
+                                            <div class="input-group">
+                                                <span class="input-group-text"
+                                                    >CEP</span
+                                                >
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="CEP1"
+                                                    id="CEP1"
+                                                    required
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-5">
+                                            <div class="input-group">
+                                                <span class="input-group-text"
+                                                    >UF</span
+                                                >
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="UF1"
+                                                    id="UF1"
+                                                    required
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-6">
+                                            <div class="input-group">
+                                                <span class="input-group-text"
+                                                    >Cidade</span
+                                                >
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="cidade1"
+                                                    id="cidade1"
+                                                    required
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <div class="input-group">
+                                                <span class="input-group-text"
+                                                    >Comp.</span
+                                                >
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="complemento1"
+                                                    id="complemento1"
+                                                    required
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-7">
+                                            <div class="input-group">
+                                                <span class="input-group-text"
+                                                    >Logradouro</span
+                                                >
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="logradouro1"
+                                                    id="logradouro1"
+                                                    required
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-5">
+                                            <div class="input-group">
+                                                <span class="input-group-text"
+                                                    >Número</span
+                                                >
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="numeroEnd1"
+                                                    id="numeroEnd1"
+                                                    required
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-12">
+                                            <div class="input-group">
+                                                <span class="input-group-text"
+                                                    >Bairro</span
+                                                >
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="bairro1"
+                                                    id="bairro1"
+                                                    required
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-12">
+                                            <div class="input-group">
+                                                <span class="input-group-text"
+                                                    >Referência</span
+                                                >
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="referencia1"
+                                                    id="referencia1"
+                                                    required
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="row justify-content-md-center ml-5">
+            <h1 class="font-weight-bold m-2 titulo text-center mt-5">
+                Serviços solicitados
+            </h1>
+        </div>
+        <div class="row" id="perfil-main">
+            <div class="col ml-5 mr-2" id="esq"></div>
+            <div class="col ml-2 mr-5" id="dir"></div>
+        </div>
+    </div>
+</div>
