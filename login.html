@@ -56,7 +56,8 @@
                         <span class="text-danger d-none">Informações de Login incorretas</span>
                     </div>
                 </div>
-                <button class="btn btn-success w-25 mb-5 mt-5" style="font-size: 20px" onclick="logar()">Entrar</button>
+                <button class="btn btn-success w-25 mb-5 mt-5" style="font-size: 20px" onclick="loginFalso()">Entrar</button>
+                <!-- <button class="btn btn-success w-25 mb-5 mt-5" style="font-size: 20px" onclick="logar()">Entrar</button> --> 
             </div>
         </div>
         <div id="footer"></div>
@@ -64,6 +65,39 @@
     <script src="assets/js/spa.js"></script>
     <script src="assets/js/login.js"></script>
     <script>
+        // Função fake para login
+        function loginFalso(){
+            const usuario = document.querySelector('input[type="text"]').value;
+            const senha = document.querySelector('input[type="password"]').value;
+            // Verifica se o usuário é "admin" e a senha é "1234"
+            if (usuario === "admin" && senha === "1234") {
+                window.location.href = 'index.html';
+            } else {
+                const mensagemErro = document.querySelector('.text-danger');
+                mensagemErro.classList.remove('d-none');
+            }
+        }
+
+        //Eventos para detectar a tecla "Enter" nos campos de usuário e senha
+        const inputUsuario = document.querySelector('input[type="text"]');
+        const inputSenha = document.querySelector('input[type="password"]');
+        const botaoEntrar = document.querySelector('.btn-success');
+
+        inputUsuario.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                // Move o foco para o campo de senha
+                inputSenha.focus();
+            }
+        });
+
+        inputSenha.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                // Clica no botão "Entrar"
+                botaoEntrar.click();
+            }
+        });
         
         function logar(){
             const inputs = document.querySelectorAll('input')

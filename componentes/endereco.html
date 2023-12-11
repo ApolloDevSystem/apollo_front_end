@@ -1,0 +1,123 @@
+<hr />
+<input type="hidden" id="tipoEndereco1" required>
+<h3 class="titulo">Endereço Adicional</h3>
+<div class="row">
+    <div class="col">
+        <div class="form-floating mb-3">
+            <input
+                class="form-control"
+                id="inputCep1"
+                style="background-color: #d9d9d9"
+                minlength="9"
+                maxlength="9"
+                required
+            />
+            <label for="inputCep">CEP</label>
+        </div>
+    </div>
+    <div class="col">
+        <div class="form-floating mb-3">
+            <input
+                class="form-control"
+                id="inputUF1"
+                style="background-color: #d9d9d9"
+                minlength="2"
+                maxlength="2"
+                required
+            />
+            <label for="inputUF">UF</label>
+        </div>
+    </div>
+    <div class="col">
+        <div class="form-floating mb-3">
+            <input
+                class="form-control"
+                id="inputCidade1"
+                style="background-color: #d9d9d9"
+                required
+            />
+            <label for="inputCidade">Cidade</label>
+        </div>
+    </div>
+    <div class="col">
+        <div class="form-floating mb-3">
+            <input
+                class="form-control"
+                id="inputBairro1"
+                style="background-color: #d9d9d9"
+                required
+            />
+            <label for="inputBairro">Bairro</label>
+        </div>
+    </div>
+    <div class="col">
+        <div class="form-floating mb-3">
+            <input
+                class="form-control"
+                id="inputLogradouro1"
+                style="background-color: #d9d9d9"
+                required
+            />
+            <label for="inputLogradouro">Logradouro</label>
+        </div>
+    </div>
+    <div class="col">
+        <div class="form-floating mb-3">
+            <input
+                class="form-control"
+                id="inputNumero1"
+                style="background-color: #d9d9d9"
+                required
+            />
+            <label for="inputNumero">Número</label>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="form-floating mb-3">
+            <textarea
+                class="form-control"
+                id="inputReferencias1"
+                style="height: 100px; background-color: #d9d9d9"
+                required
+            ></textarea>
+            <label for="inputReferencias"
+                >Referências / Descrição do prédio</label
+            >
+        </div>
+    </div>
+    <div class="col" id="radios">
+        <label for="">Complemento</label>
+        <div class="form-check">
+            <input
+                class="form-check-input"
+                type="radio"
+                value="casa"
+                id="radioCasa"
+                name="tipoEnderecoAdc"
+            />
+            <label class="form-check-label" for="radioCasa"> Casa </label>
+        </div>
+        <div class="form-check">
+            <input
+                class="form-check-input"
+                type="radio"
+                value="prédio"
+                id="radioPredio"
+                name="tipoEnderecoAdc"
+            />
+            <label class="form-check-label" for="radioPredio"> Prédio </label>
+        </div>
+        <div class="form-check">
+            <input
+                class="form-check-input"
+                type="radio"
+                value="empresa"
+                id="radioEmpresa"
+                name="tipoEnderecoAdc"
+            />
+            <label class="form-check-label" for="radioEmpresa"> Empresa </label>
+        </div>
+    </div>
+</div>

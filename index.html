@@ -3,9 +3,16 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
         <title>Apollo-km5</title>
 
         <!-- Bootstrap CSS -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous"
+        />
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
         <link
             rel="stylesheet"
@@ -13,6 +20,7 @@
         />
         <link rel="stylesheet" href="assets/css/sidebar.css" />
         <link rel="stylesheet" href="assets/css/style.css" />
+        <link rel="stylesheet" href="assets/css/modal.css" />
     </head>
 
     <body id="body-pd">
@@ -86,30 +94,67 @@
                                 aria-labelledby="dropdownServ"
                             >
                                 <li>
-                                    <a class="dropdown-item" href="#" onclick="cadastrarServ()"
+                                    <a
+                                        class="dropdown-item"
+                                        href="#"
+                                        onclick="cadastrarServ()"
                                         >Novo Serviço</a
                                     >
                                 </li>
                                 <li><hr class="dropdown-divider" /></li>
                                 <li>
-                                    <a class="dropdown-item" href="#" onclick="viewServ()">
+                                    <a
+                                        class="dropdown-item"
+                                        href="#"
+                                        onclick="viewServ()"
+                                    >
                                         Visualizar Serviços</a
                                     >
                                 </li>
                             </ul>
                         </div>
-                        <a
-                            href="#"
-                            class="nav_link text-white"
-                            onclick="clientes()"
-                        >
-                            <img
-                                class="bi me-2"
-                                src="icons/clientes.svg"
-                                alt="logo"
-                            />
-                            <span class="nav_name"> Clientes </span>
-                        </a>
+                        <div class="dropdown-rigth">
+                            <a
+                                href="#"
+                                class="d-flex align-items-center text-white text-decoration-none dropdown-toggle nav_link"
+                                id="dropdownCli"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                                aria-haspopup="true"
+                            >
+                                <img
+                                    class="bi me-2"
+                                    src="icons/clientes.svg"
+                                    alt="logo"
+                                />
+                                <span class="nav_name"> Clientes </span>
+                            </a>
+                            <ul
+                                href="#"
+                                class="dropdown-menu dropdown-menu-dark text-small shadow"
+                                aria-labelledby="dropdownCli"
+                            >
+                                <li>
+                                    <a
+                                        class="dropdown-item"
+                                        href="#"
+                                        onclick="cadastrarCli()"
+                                    >
+                                        Cadastrar cliente</a
+                                    >
+                                </li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li>
+                                    <a
+                                        class="dropdown-item"
+                                        href="#"
+                                        onclick="viewCli()"
+                                    >
+                                        Visualizar clientes</a
+                                    >
+                                </li>
+                            </ul>
+                        </div>
                         <div class="dropdown-rigth">
                             <a
                                 href="#"
@@ -121,7 +166,7 @@
                             >
                                 <img
                                     class="bi me-2"
-                                    src="icons/clientes.svg"
+                                    src="icons/funcionario.svg"
                                     alt="logo"
                                 />
                                 <span class="nav_name"> Funcionários </span>
@@ -132,13 +177,20 @@
                                 aria-labelledby="dropdownFunc"
                             >
                                 <li>
-                                    <a class="dropdown-item" href="#"
+                                    <a
+                                        class="dropdown-item"
+                                        href="#"
+                                        onclick="cadastrarFunc()"
                                         >Cadastrar Funcionário</a
                                     >
                                 </li>
                                 <li><hr class="dropdown-divider" /></li>
                                 <li>
-                                    <a class="dropdown-item" href="#" onclick="viewFunc()">
+                                    <a
+                                        class="dropdown-item"
+                                        href="#"
+                                        onclick="viewFunc()"
+                                    >
                                         Visualizar Funcionários</a
                                     >
                                 </li>
@@ -184,96 +236,152 @@
                                     <span class="text-white">confirmar</span>
                                 </button>
                             </div>
+                            <div class="dropdown-rigth" id="apollo_drop">
+                                <a
+                                    href="#"
+                                    class="d-flex align-items-center text-white text-decoration-none dropdown-toggle nav_link"
+                                    id="dropdownUser1"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                    aria-haspopup="true"
+                                >
+                                    <img
+                                        src="img/apollo color.png"
+                                        alt=""
+                                        width="24"
+                                        height="24"
+                                        class="rounded-circle me-2"
+                                    />
+                                    <strong>Apollo</strong>
+                                </a>
+                                <ul
+                                    class="dropdown-menu dropdown-menu-dark text-small shadow"
+                                    aria-labelledby="dropdownUser1"
+                                >
+                                    <li>
+                                        <a class="dropdown-item" href="#"
+                                            >Configurações</a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#"
+                                            >Contato</a
+                                        >
+                                    </li>
+                                    <li><hr class="dropdown-divider" /></li>
+                                    <!--tratar logoff-->
+                                    <li>
+                                        <a
+                                            class="dropdown-item"
+                                            href="login.html"
+                                            onclick="sair()"
+                                            >Sair</a
+                                        >
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="dropdown fixed-bottom">
-                    <a
-                        href="#"
-                        class="d-flex align-items-center text-white text-decoration-none dropdown-toggle nav_link"
-                        id="dropdownUser1"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                        aria-haspopup="true"
-                    >
-                        <img
-                            src="img/apollo color.png"
-                            alt=""
-                            width="32"
-                            height="32"
-                            class="rounded-circle me-2"
-                        />
-                        <strong>Apollo</strong>
-                    </a>
-                    <ul
-                        class="dropdown-menu dropdown-menu-dark text-small shadow"
-                        aria-labelledby="dropdownUser1"
-                    >
-                        <li>
-                            <a class="dropdown-item" href="#">Configurações</a>
-                        </li>
-                        <li><a class="dropdown-item" href="#">Contato</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <!--tratar logoff-->
-                        <li>
-                            <a
-                                class="dropdown-item"
-                                href="login.html"
-                                onclick="sair()"
-                                >Sair</a
-                            >
-                        </li>
-                    </ul>
                 </div>
             </nav>
         </div>
         <!--Container Main start-->
         <div class="height-100">
-            <div id="main-content" class="mt-4">
-                
+            <!-- MODAL -->
+            <div class="container card border-0 bg-transparent" id="card-modal">
+                <div
+                    class="card border-0 w-25 py-5 mx-auto"
+                    id="card-card-modal"
+                >
+                    <div class="mx-auto">
+                        <img src="icons/warning.png" alt="" />
+                    </div>
+                    <div
+                        class="mx-auto mt-4 w-100 text-center"
+                        id="mensagem-erro"
+                    >
+                        Erro de tal coisa
+                    </div>
+                    <button class="btn btn-danger mt-3" id="fechar-modal">
+                        Fechar
+                    </button>
+                </div>
             </div>
+            <div id="main-content" class="mt-4"></div>
         </div>
 
         <!-- jQuery (antes do Bootstrap) -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
 
         <!-- Bootstrap JS -->
         <script src="assets/js/bootstrap.bundle.min.js"></script>
 
         <script src="assets/js/sidebar.js"></script>
         <script src="assets/js/spa.js"></script>
-    
+        <script src="assets/js/ferramentas.js"></script>
+        <script src="assets/js/api.js"></script>
+
+        <!-- <script src="assets/js/app.js"></script> --->
     </body>
-    <script src="assets/js/funcionario/funcionarios.js"></script>
     <script>
+        const token = document.head
+            .querySelector('meta[name="csrf-token"]')
+            .getAttribute("content");
         // window.onload = history.back()
         let main_content = document.querySelector("#main-content");
-        function clientes() {
-            history.pushState({}, null, "/clientes");
-            main_content.textContent = "";
-            let clientes = "componentes/cliente/clientes.html";
-            render(main_content, clientes, null);
-            carregarClientes();
-        }
-        function viewFunc() {
-            main_content.textContent = "";
-            fetch("/componentes/funcionario/funcionarios.html")
-                .then((response) => response.text())
-                .then((data) => {
-                    main_content.innerHTML = data;
-                    let teste =
-                        '[{"id": 1, "img": "asds", "nome": "kaua", "cargo": "dono"}, {"id": 2, "img": "asds", "nome": "kaua", "cargo": "dono"}, {"id": 1, "img": "asds", "nome": "kaua", "cargo": "dono"}, {"id": 2, "img": "asds", "nome": "kaua", "cargo": "dono"}, {"id": 1, "img": "asds", "nome": "kaua", "cargo": "dono"}, {"id": 2, "img": "asds", "nome": "kaua", "cargo": "dono"}]';
-                    let dataF = JSON.parse(teste);
-                    const divFunc = document.querySelector("#func");
-                    alimentarFunc(dataF, divFunc);
-                    const divAdm = document.querySelector("#adm");
-                    alimentarAdm(dataF, divAdm);
-                })
-                .catch((error) => {
-                    console.error("Erro ao carregar o componente HTML:", error);
-                });
+
+        function cadastrarCli() {
+            // history.pushState({}, null, "/clientes");
+            let cadastroCli = "componentes/cliente/cadastroCliente.html";
+            let cadastroClijs = "assets/js/cliente/cadastroCli.js";
+            render(main_content, cadastroCli, cadastroClijs);
         }
 
-        
+        function cadastrarServ() {
+            //history.pushState({}, null, "/servico");
+            main_content.textContent = "";
+            let servico = "componentes/servico/cadastroServico.html";
+            let servicojs = "assets/js/servico/cadastroServ.js";
+            render(main_content, servico, servicojs);
+        }
+
+        function viewServ() {
+            let listaServico = "componentes/servico/listaServico.html";
+            let tableservico = "assets/js/servico/servicos.js";
+            render(main_content, listaServico, tableservico);
+        }
+
+        function viewCli() {
+            //history.pushState({}, null, "/clientes");
+            let clientes = "componentes/cliente/clientes.html";
+            let clientesjs = "assets/js/cliente/clientes.js";
+            render(main_content, clientes, clientesjs);
+        }
+
+        //window.onload = viewFunc()
+        function viewFunc() {
+            let funcionarios = "componentes/funcionario/funcionarios.html";
+            let funcionariosjs = "assets/js/funcionario/funcionarios.js";
+
+            render(main_content, funcionarios, funcionariosjs);
+        }
+
+        function cadastrarFunc() {
+            let cadastroFunc =
+                "componentes/funcionario/cadastroFuncionario.html";
+            let cadastroFuncjs = "assets/js/funcionario/cadastroFunc.js";
+
+            render(main_content, cadastroFunc, cadastroFuncjs);
+        }
+
+        function perfil() {
+            let perfil = "componentes/perfil/perfilCliente.html";
+            let perfiljs = "assets/js/perfilCli.js";
+
+            render(main_content, perfil, perfiljs);
+        }
     </script>
 </html>

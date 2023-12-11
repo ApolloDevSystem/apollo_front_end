@@ -1,0 +1,64 @@
+<body>
+    <div class="container">
+        <h1 class="titulo">Adicionar Serviço ao Sistema</h1>
+        <div>
+            <h3 class="titulo">Cliente</h3>
+            <div class="row">
+                <div class="col mx-2">
+                    <div class="form-floating mb-3">
+                        <select
+                            class="form-control w-75"
+                            id="inputNomeCliente"
+                            style="width: 35%; background-color: #d9d9d9"
+                        >
+                            <option value=""> </option>
+                        </select>
+                        <label for="inputNomeCliente">Nome do cliente</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <button class="btn btn-success h-75" id="btnCadCli" disabled>
+                        Cadastrar Cliente
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input type="checkbox" class="mx-2" id="checkBtnCli">
+                    <label for="">Não encontrei o cliente</label>
+                </div>
+            </div>
+        </div>
+
+        <hr />
+        <h3 class="titulo">Descrição do problema</h3>
+        <div class="row">
+            <div class="col mx-2">
+                <div class="form-floating mb-3">
+                    <textarea
+                        class="form-control"
+                        id="inputDescricao"
+                        style="
+                            width: 45%;
+                            height: 100px;
+                            background-color: #d9d9d9;
+                        "
+                    ></textarea>
+                    <label for="inputDescricao">Descrição</label>
+                </div>
+            </div>
+        </div>
+
+        <hr />
+        <h3 class="titulo">Serviços</h3>
+        
+        <div id="novoServico"></div>
+
+        <hr />
+        <button id="btnAddServico" class="btn btn-outline-success">
+            Adicionar serviço
+        </button>
+        <button id="btnConfirmar" class="btn btn-success">Confirmar</button>
+        <br /><br /><br /><br /><br /><br />
+    </div>
+</body>
