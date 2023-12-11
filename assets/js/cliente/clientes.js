@@ -24,7 +24,7 @@ function carregarTabela(pesquisaInp = null){
     })
     .then(response => response.json())
     .then(data => {
-        if(DataTransfer.length === 0){
+        if(data.length === 0){
             vazio(container, "SEM CLIENTES CADASTRADOS", cadastrarCli)
             return
         }

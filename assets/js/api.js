@@ -1,10 +1,6 @@
 async function get(rota, dado) {
     try {
-        if(typeof dado === "string"){
-            dado = parseInt(dado, 10)
-        }
-
-        const response = await fetch(`http://127.0.0.1:8000/api/${rota}/`+dado, {
+        const response = await fetch(`http://127.0.0.1:8000/api/${rota}/` + dado, {
             method: 'GET',
             headers: {
                 'X-CSRF-TOKEN': token
@@ -40,5 +36,23 @@ async function post(rota, dado) {
     } catch (error) {
         console.error('Erro na requisição:', error);
         throw error;  // Isso permite que o erro seja propagado para o código que chamou a função post
+    }
+}
+
+async function getAll(rota) {
+    try {
+        // criando options de clientes
+        const response = await fetch(`http://127.0.0.1:8000/api/${rota}`, {
+            method: 'GET',
+            headers: {
+                'X-CSRF-TOKEN': token
+            },
+            mode: 'cors'
+        });
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error(error);
     }
 }

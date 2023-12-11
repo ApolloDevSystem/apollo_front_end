@@ -1,5 +1,5 @@
 (function () {
-    mascaras(); 
+    mascaras();
 
     let formCriado = false;
     const divEnderecoAdicional = document.getElementById('novoEnd');
@@ -8,7 +8,7 @@
     btnAddEnd.addEventListener('click', function () {
         event.preventDefault();
         if (!formCriado) {
-            const endereco = "componentes/endereco.html"; 
+            const endereco = "componentes/endereco.html";
             render(divEnderecoAdicional, endereco, "assets/js/endereco/endereco.js");
             document.getElementById('btnAddEndereco').textContent = "Remover Endereço Adicional";
             formCriado = true;
@@ -20,7 +20,7 @@
     });
 
     function obterDadosFormularioCliente() {
-        const inputNome = document.getElementById('inputNomeCliente').value;
+        const inputNome = document.getElementById('inputNome').value;
         const inputCPF = document.getElementById('inputCPF').value;
         const inputTelefone = document.getElementById('inputTelefone').value;
         const inputEmail = document.getElementById('inputEmail').value;
@@ -28,7 +28,7 @@
         const cliente = {
             nome: inputNome,
             cpf: inputCPF,
-            telefone: inputTelefone,
+            numero: inputTelefone,
             email: inputEmail,
             enderecos: null
         };
@@ -46,12 +46,12 @@
         const logradouro = document.getElementById('inputLogradouro' + num).value;
         const numero = document.getElementById('inputNumero' + num).value;
         const referencia = document.getElementById('inputReferencias' + num).value;
-    
+
         let tipoEndereco;
         const radioCasa = document.getElementById('radioCasa' + num);
         const radioPredio = document.getElementById('radioPredio' + num);
         const radioEmpresa = document.getElementById('radioEmpresa' + num);
-    
+
         if (radioCasa.checked) {
             tipoEndereco = radioCasa.value;
         } else if (radioPredio.checked) {
@@ -59,10 +59,10 @@
         } else if (radioEmpresa.checked) {
             tipoEndereco = radioEmpresa.value;
         } else {
-            window.alert("Selecione um complemento");
-            return null;
+            window.alert("selecione um complemento")
+            return null
         }
-    
+
         const endereco = {
             CEP: cepGet,
             UF: uf,
@@ -73,12 +73,12 @@
             referencia: referencia,
             complemento: tipoEndereco
         };
-    
+
         console.log('Dados do formulário:', endereco);
 
         return endereco;
     }
-    
+
     document.getElementById('btnCadastrar').addEventListener('click', async function () {
         event.preventDefault();
         const formulario = document.querySelector('form');
@@ -86,22 +86,24 @@
 
             const cliente = obterDadosFormularioCliente();
 
-            const enderecoPrincipal = obterDadosFormularioEndereco();
-            let enderecoAdicional = null;
-            if (formCriado)
-                enderecoAdicional = obterDadosFormularioEndereco('1');
+            if (cliente) {
+                const enderecoPrincipal = obterDadosFormularioEndereco();
+                let enderecoAdicional = null;
+                if (formCriado)
+                    enderecoAdicional = obterDadosFormularioEndereco('1');
 
-            if (enderecoPrincipal || enderecoAdicional) {
-                cliente.enderecos = [enderecoPrincipal, enderecoAdicional].filter(Boolean);
-                const dadosParaAPI = {
-                    cliente: cliente,
-                };
+                if (enderecoPrincipal || enderecoAdicional) {
+                    cliente.enderecos = [enderecoPrincipal, enderecoAdicional].filter(Boolean);
+                    const dadosParaAPI = {
+                        cliente: cliente,
+                    };
 
-                console.log('Dados a serem enviados para a API:', dadosParaAPI);
-                
-                post('cliente', dadosParaAPI);
-            } else {
-                window.alert("Preencha pelo menos um endereço");
+                    console.log('Dados a serem enviados para a API:', dadosParaAPI);
+
+                    await post('cliente', dadosParaAPI);
+                } else {
+                    window.alert("Preencha pelo menos um endereço");
+                }
             }
         } else {
             console.log('Formulário inválido');
@@ -115,6 +117,7 @@
         if (inputCpf.value.length === 14 && !inputCpf.value.includes('_')) {
             try {
                 const existe = await get('clienteCpf', inputCpf.value);
+                console.log(existe)
                 console.log(existe.clientes.length)
                 if (existe.clientes.length !== 0) {
                     criarModal("CPF JA EXISTENTE NO SISTEMA")

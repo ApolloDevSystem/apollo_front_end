@@ -139,6 +139,7 @@
     const inputCpf = document.getElementById('inputCPF');
     inputCpf.addEventListener('keyup', async () => {
         if (inputCpf.value.length === 14 && !inputCpf.value.includes('_')) {
+        
             try {
                 const existe = await get('funcionarioCpf', inputCpf.value);
                 console.log(existe.funcionarios.length)

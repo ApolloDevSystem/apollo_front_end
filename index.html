@@ -340,11 +340,12 @@
             render(main_content, cadastroCli, cadastroClijs);
         }
 
+        window.onload = cadastrarServ
         function cadastrarServ() {
             //history.pushState({}, null, "/servico");
             main_content.textContent = "";
             let servico = "componentes/servico/cadastroServico.html";
-            let servicojs = "assets/js/servico/servico.js";
+            let servicojs = "assets/js/servico/cadastroServ.js";
             render(main_content, servico, servicojs);
         }
 
