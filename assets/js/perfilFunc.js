@@ -74,13 +74,8 @@
 
     alimentacao()
     async function alimentacao() {
-        //alimentação dos dados do cliente
-        //import('js/apiConsumo.js').then(({ get }) => {
         alimentaDados()
         alimentaEnderecos()
-        //})
-        //alimentação do histórico 
-        //import('js/apiConsumo.js').then(({ get }) => {
         /////kkkkkk mo trampo pra pegar os serviços vai vendo kkkk
 
     }
