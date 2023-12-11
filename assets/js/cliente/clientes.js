@@ -41,22 +41,22 @@ function carregarTabela(pesquisaInp = null){
                     document.cookie = "id=" + e.IDCliente + "; path=/";
              
                     //aplicar mudança para perfil de cliente
-                    clientePerfil = "componentes/perfil/perfilCliente.html"
-                    clientePerfiljs = "assets/js/perfilCli.js"
+                    clientePerfil = "componentes/perfil/perfil.html"
+                    clientePerfiljs = "assets/js/perfil/perfilCli.js"
                     render(document.getElementById('main-content'), clientePerfil, clientePerfiljs)
                 })
                 const tdNome = document.createElement('td')
                 const tdCpf = document.createElement('td')
                 const tdTelefone = document.createElement('td')
-                const tdEndereco = document.createElement('td')
+                const tdEmail = document.createElement('td')
                 tdNome.textContent = e.nome
                 tdCpf.textContent = e.cpf
                 tdTelefone.textContent = e.numero
-                tdEndereco.textContent = e.endereco
+                tdEmail.textContent = e.email
                 linha.appendChild(tdNome)
                 linha.appendChild(tdCpf)
                 linha.appendChild(tdTelefone)
-                linha.appendChild(tdEndereco)
+                linha.appendChild(tdEmail)
                 tbody.appendChild(linha)   
             }
         })

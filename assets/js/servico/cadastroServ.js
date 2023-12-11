@@ -36,7 +36,7 @@
     });
     document.getElementById('btnAddServico').addEventListener('click', function () {
 
-        if (con < 4) {
+        if (con < 5) {
             createForm();
             scrollToBottom();
             con++;
@@ -62,7 +62,7 @@
         const mainContainer = document.getElementById("novoServico");
 
         // Criar div com classe "container"
-        const divContainer = createElement('div', { class: 'container' });
+        const divContainer = createElement('div', { class: 'container my-2' });
         appendElement(mainContainer, divContainer);
 
         // Criar div com classe "row"
@@ -118,6 +118,11 @@
         const remover = createElement('img', {
             src: 'icons/remove.png',
         });
+
+        remover.addEventListener('click', () => {
+            mainContainer.removeChild(divContainer)
+            con--
+        })
         appendElement(formFloatingRemover, remover);
         appendElement(colRemover, formFloatingRemover);
 
@@ -126,8 +131,8 @@
         appendElement(divRow, colRemover);
 
         
-        const br = createElement('br', {});
-        appendElement(mainContainer, br);
+       // const br = createElement('br', {});
+        //appendElement(mainContainer, br);
     }
 
     function scrollToBottom() {

@@ -93,7 +93,7 @@ function enderecoAdcVazio(div) {
     button.addEventListener('click', () => {
         event.preventDefault()
         /* a implementar :) */
-        criarModal("FUNÇÂO AINDA NÃO IMPLEMENTADA")
+        criarModal("FUNÇÃO AINDA NÃO IMPLEMENTADA")
     } )
 
     divCardBody.appendChild(paragraph);

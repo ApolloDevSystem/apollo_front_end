@@ -49,7 +49,7 @@ function alimentarFunc(data, div) {
         vazio(div, "SEM FUNCIONÁRIOS CADASTRADOS", cadastrarFunc)
     data.forEach(funcionario => {
         funcionario.id = funcionario.IDFuncionario
-        bloco(div, funcionario)
+        bloco(div, funcionario, "func")
     })
 }
 
@@ -57,12 +57,12 @@ function alimentarAdm(data, div) {
 
     data.forEach(adm => {
         adm.id = adm.id
-        bloco(div, adm)
+        bloco(div, adm, "adm")
     })
 }
 
 //cria o bloco de funcioario -- adm ou func
-function bloco(div, dados_func) {
+function bloco(div, dados, tipo) {
     let col = document.createElement("div");
     col.classList.add('col-md-3', 'mb-5', 'div-saltar', 'mx-3', 'p-0');
 
@@ -83,11 +83,11 @@ function bloco(div, dados_func) {
 
     let nome = document.createElement("h5");
     nome.classList.add('card-title');
-    nome.textContent = dados_func.nome;
+    nome.textContent = dados.nome;
 
     let telefone = document.createElement('p');
     telefone.classList.add('card-text', 'text-secondary');
-    telefone.textContent = "Tel: " + formatarTelefone(dados_func.numero);
+    telefone.textContent = "Tel: " + formatarTelefone(dados.numero);
 
     infoDiv.appendChild(nome);
     infoDiv.appendChild(telefone);
@@ -99,11 +99,18 @@ function bloco(div, dados_func) {
 
     //redirecionando para perfil
     col.addEventListener('click', () => {
-        document.cookie = "id=" + dados_func.id + "; path=/";
-
-        let perfil = "componentes/perfil/perfilFuncionario.html";
-        let perfiljs = "assets/js/perfilFunc.js"
-        render(document.getElementById('main-content'), perfil, perfiljs)
+        document.cookie = "id=" + dados.id + "; path=/";
+        if(tipo === "func"){
+            let perfil = "componentes/perfil/perfilFuncionario.html";
+            let perfiljs = "assets/js/perfil/perfilFunc.js"
+            render(document.getElementById('main-content'), perfil, perfiljs)
+        }
+        if(tipo === "adm"){
+            let perfil = "componentes/perfil/perfil.html";
+            let perfiljs = "assets/js/perfil/perfilAdm.js"
+            render(document.getElementById('main-content'), perfil, perfiljs)
+        }
+       
     })
 
     div.appendChild(col);
