@@ -112,7 +112,12 @@
                     // Aqui você deve chamar sua função de envio para a API, passando o objeto "dadosParaAPI"
                     console.log('Dados a serem enviados para a API:', dadosParaAPI);
 
-                    post('funcionario', dadosParaAPI)
+                    const id = await post('funcionario', dadosParaAPI)
+                    document.cookie = "id=" + id.id + "; path=/";
+                    let perfil = "componentes/perfil/perfilFuncionario.html";
+                    let perfiljs = "assets/js/perfil/perfilFunc.js"
+                    render(document.getElementById('main-content'), perfil, perfiljs)
+
                 } else {
                     window.alert("Preencha pelo menos um endereço");
                 }
@@ -139,7 +144,7 @@
     const inputCpf = document.getElementById('inputCPF');
     inputCpf.addEventListener('keyup', async () => {
         if (inputCpf.value.length === 14 && !inputCpf.value.includes('_')) {
-        
+
             try {
                 const existe = await get('funcionarioCpf', inputCpf.value);
                 console.log(existe.funcionarios.length)

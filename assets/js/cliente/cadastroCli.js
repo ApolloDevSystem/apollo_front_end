@@ -100,7 +100,13 @@
 
                     console.log('Dados a serem enviados para a API:', dadosParaAPI);
 
-                    await post('cliente', dadosParaAPI);
+                    const id = await post('cliente', dadosParaAPI);
+                    document.cookie = "id=" + id.id + "; path=/";
+             
+                    //aplicar mudança para perfil de cliente
+                    clientePerfil = "componentes/perfil/perfil.html"
+                    clientePerfiljs = "assets/js/perfil/perfilCli.js"
+                    render(document.getElementById('main-content'), clientePerfil, clientePerfiljs)
                 } else {
                     window.alert("Preencha pelo menos um endereço");
                 }
