@@ -56,3 +56,23 @@ async function getAll(rota) {
         console.error(error);
     }
 }
+
+async function login(dado) {
+    try {
+        const response = await fetch('http://127.0.0.1:8000/api/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': token
+            },
+            mode: 'cors',
+            body: JSON.stringify(dado)
+        });
+        console.log('Resposta do servidor:', response);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Erro na requisição:', error);
+        throw error;  // Isso permite que o erro seja propagado para o código que chamou a função post
+    }
+}
